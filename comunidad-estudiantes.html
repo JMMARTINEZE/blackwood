@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/artlogo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/comunidad-estudiantes.css">
+</head>
+
+<body>
+
+    <div id="app-grid">
+
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
+            </a>
+
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="estado.html">Estado Actual</a></li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="guia-residente.html">Guía del Residente</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="cartografia-tuneles.html">Cartografía de Túneles</a></li>
+                    <li><a href="logistica-suministros.html">Logística y Suministros</a></li>
+                    <li><a href="primeros-auxilios.html">Primeros Auxilios ART</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li><a href="manual-tecnico.html">Manual Técnico de Terminales</a></li>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main-wrapper">
+
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Inicio</a>
+                    <a href="protocolos-seguridad.html">
+                        <b>ESTADO DE ALERTA</b> <span class="status-text-green">Estabilidad (Verde)</span>
+                    </a>
+                </nav>
+
+                <div id="search-box" style="display: flex; align-items: center; gap: 5px;">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART...">
+                    <div id="search-nav" style="display: none; align-items: center; gap: 5px;">
+                        <span id="search-count"
+                            style="font-size: 0.75em; font-family: monospace; color: #888; margin-right: 5px;">0/0</span>
+                        <button onclick="prevMatch()" class="btn-search-nav">▲</button>
+                        <button onclick="nextMatch()" class="btn-search-nav">▼</button>
+                    </div>
+                </div>
+
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
+
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
+
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
+
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
+
+            <article id="content">
+                <section class="nest-theme">
+
+                    <!-- CABECERA -->
+                    <header class="nest-header">
+                        <h1>🪹 THE NEST</h1>
+                        <p>El lugar donde Blackwood se permite respirar.</p>
+                    </header>
+                </section>
+                <br>
+                <!-- MENSAJE DE BIENVENIDA -->
+                <section class="nest-card">
+                    <p>
+                        Este no es un tablón oficial.
+                        Tampoco es un informe.
+                    </p>
+                    <p>
+                        Es el sitio donde colgamos lo que importa <i>ahora</i>:
+                        quién toca esta semana, qué se celebra, a quién traes al baile.
+                    </p>
+                    <p style="font-size:0.9em; color:#555;">
+                        ART lo sabe. Los Custodios también.
+                        Mientras cuidemos el Nest, el Nest cuida de nosotros.
+                    </p>
+                </section>
+
+                <!-- EVENTO PRINCIPAL -->
+                <section class="nest-card">
+                    <h3>❄️ Baile de Invierno</h3>
+                    <p>
+                        Este sábado. Sala Común. Luces bajas, música alta y permiso
+                        explícito para no hablar de protocolos.
+                    </p>
+
+                    <ul>
+                        <li>🕗 Apertura: 19:30</li>
+                        <li>🎶 DJ local + playlist colaborativa</li>
+                        <li>👔 Vestimenta: lo que te haga sentir tú</li>
+                    </ul>
+
+                    <div class="nest-highlight">
+                        <strong>¿Invitado externo?</strong><br>
+                        Sí, puedes traer a alguien de fuera. ¡Todos queremos conocer a tu novi@!
+                        <br><br>
+                        ⚠️ <b>Plazo limitado:</b> solicitudes abiertas hasta 1 semana antes del evento.
+                        <br>
+                        <a href="solicitud-ingreso.html">Solicitar invitación externa →</a>
+                    </div>
+                </section>
+
+                <!-- EVENTO RITUAL -->
+                <section class="nest-card">
+                    <h3>🖤 El Vuelo del Cuervo</h3>
+                    <p>
+                        El rito de mayoría de edad no se anuncia.
+                        Se recuerda.
+                    </p>
+                    <p>
+                        Este año tendrá lugar en <b>dos días</b>.
+                        Si sabes, sabes.
+                    </p>
+
+                    <p style="font-size:0.85em; color:#666;">
+                        Nota para observadores externos:
+                        evento cerrado, sin retransmisión.
+                    </p>
+                </section>
+
+                <!-- MÚSICA -->
+                <section class="nest-card">
+                    <h3>🎧 Sonando ahora en el Nest</h3>
+                    <p>La playlist colaborativa del Baile de Invierno. Habrá un momento para todos.</p>
+
+                    <ol class="nest-playlist">
+                        <!-- Calentamiento / miradas -->
+                        <li>“Sweater Weather” — The Neighbourhood</li>
+
+                        <!-- Pop transversal / todo el mundo entra -->
+                        <li>“Dance The Night” — Dua Lipa</li>
+
+                        <!-- Energía alta / ahora sí se baila -->
+                        <li>“Dance, Dance” — Fall Out Boy</li>
+
+                        <!-- Rock / alternativo -->
+                        <li>“Bleed It Out” — Linkin Park</li>
+
+                        <!-- Oscuro / sexy / tensión -->
+                        <li>“Change (In the House of Flies)” — Deftones</li>
+
+                        <!-- Invitados / gustos de fuera -->
+                        <li>“Paint The Town Red” — Doja Cat</li>
+
+                        <!-- Identidad local / escena Nest -->
+                        <li>“Neon Appalachian” — The Echoes</li>
+                        <li>“Brazalete en Rojo” — Synth-Kid</li>
+                        <li>“Protocolo de Huida (lo-fi)” — Archivo Local</li>
+
+                        <!-- Cierre emocional -->
+                        <li>“Shadow of the Day” — Linkin Park</li>
+                    </ol>
+
+                    <p class="nest-note">
+                        <a href="https://open.spotify.com/playlist/5GI8LbirvYbXreaZxy1WNS?si=0065075c6c234867&pt=7648d1e6cca3911a4ddfa4b2ab9149cd"
+                            target="_blank">
+                            ¿Quieres añadir algo? Esta lista es dinámica. Añade tus sugerencias ahora mismo o en la Sala
+                            Común.
+                            Recuerda: el Nest es de todos.
+                        </a>
+                    </p>
+
+                    <p> ¿Quieres escucharla ahora mismo? </p>
+                    <p>
+                        <iframe data-testid="embed-iframe" style="border-radius:12px"
+                            src="https://open.spotify.com/embed/playlist/5GI8LbirvYbXreaZxy1WNS?utm_source=generator"
+                            width="100%" height="152" frameborder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </p>
+                </section>
+
+
+                <!-- VIDA SOCIAL -->
+                <section class="nest-card">
+                    <h3>🙂 Cosas que están pasando</h3>
+                    <ul>
+                        <li>El equipo de basket busca refuerzo (no preguntan edad).</li>
+                        <li>El club de teatro necesita gente que no tenga miedo al ridículo.</li>
+                        <li>Alguien dejó una chaqueta en la Sala Común. Lleva un cuervo bordado.</li>
+                        <li>¿Intercambio de libros? Deja el tuyo en la estantería y coge otro.</li>
+                        <li>¿Tienes una habilidad especial? Ofrece talleres en el Nest.</li>
+                        <li>¿Ideas para mejorar el Nest? Escríbelas en el buzón de sugerencias.</li>
+                        <li>¿Quieres ayudar a organizar eventos? Contacta con Maya o Jax en la Sala Común.</li>
+                    </ul>
+                </section>
+
+                <!-- APOYO -->
+                <section class="nest-card">
+                    <h3>🤝 Si necesitas algo</h3>
+                    <p>
+                        No todo es música y eventos.
+                    </p>
+                    <p>
+                        Si algo pesa más de la cuenta, pasa por aquí o habla con cualquiera
+                        de los nombres que aparecen en el tablón físico del Nest.
+                    </p>
+
+                    <p style="font-size:0.85em; color:#666;">
+                        Apoyo entre residentes, con respaldo discreto del equipo de Custodios.
+                    </p>
+                </section>
+
+                <!-- CIERRE -->
+                <section class="nest-card nest-closing-inline">
+                    <img src="img/cuervo-vuelo-nest.png" alt="Cuervo alzando el vuelo desde el nido"
+                        class="nest-closing-thumb">
+
+                    <div class="nest-closing-text">
+                        <p>
+                            <strong>El Nest no es perfecto.<br>
+                                Pero es nuestro.</strong>
+                        </p>
+
+                        <a href="img/cuervo-vuelo-nest.png" target="_blank" class="nest-image-link">
+                            Ver ilustración completa
+                        </a>
+                    </div>
+                </section>
+
+            </article>
+        </main>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
+
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
