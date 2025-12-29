@@ -593,3 +593,20 @@ body.dark-mode #main-footer {
     padding: 2px 5px;
     border-radius: 3px;
 }
+
+/* ===== ESTILOS ESPECÍFICOS PARA PROTOCOLOS DE SEGURIDAD ===== */
+/* Colores de estado puro texto */
+.status-text-green {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-text-orange {
+    color: #fd7e14;
+    font-weight: bold;
+}
+
+.status-text-red {
+    color: #dc3545;
+    font-weight: bold;
+}

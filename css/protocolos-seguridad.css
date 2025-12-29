@@ -1,0 +1,48 @@
+.alert-card {
+    border: 2px solid;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.alert-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.alert-body {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.protocol-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-left: 4px solid;
+    margin-top: 10px;
+}
+
+.priority-warn {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px dashed;
+    padding: 8px;
+    margin-top: 15px;
+}
+
+/* Colores específicos por nivel */
+.alert-red { border-color: #dc3545; color: #dc3545; }
+.alert-red .alert-header { background: #dc3545; color: white; }
+.alert-red .protocol-box { border-left-color: #dc3545; }
+
+.alert-orange { border-color: #fd7e14; color: #fd7e14; }
+.alert-orange .alert-header { background: #fd7e14; color: white; }
+.alert-orange .protocol-box { border-left-color: #fd7e14; }
+
+.alert-green { border-color: #28a745; color: #28a745; opacity: 0.8; }
+.alert-green .alert-header { background: #28a745; color: white; }
