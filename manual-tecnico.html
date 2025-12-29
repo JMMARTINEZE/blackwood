@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/artlogo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="app-grid">
+
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
+            </a>
+
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="estado.html">Estado Actual</a></li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="guia-residente.html">Guía del Residente</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="cartografia-tuneles.html">Cartografía de Túneles</a></li>
+                    <li><a href="logistica-suministros.html">Logística y Suministros</a></li>
+                    <li><a href="primeros-auxilios.html">Primeros Auxilios ART</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li><a href="manual-tecnico.html">Manual Técnico de Terminales</a></li>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main-wrapper">
+
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Inicio</a>
+                    <a href="protocolos-seguridad.html">
+                        <b>ESTADO DE ALERTA</b> <span class="status-text-green">Estabilidad (Verde)</span>
+                    </a>
+                </nav>
+
+                <div id="search-box" style="display: flex; align-items: center; gap: 5px;">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART...">
+                    <div id="search-nav" style="display: none; align-items: center; gap: 5px;">
+                        <span id="search-count"
+                            style="font-size: 0.75em; font-family: monospace; color: #888; margin-right: 5px;">0/0</span>
+                        <button onclick="prevMatch()" class="btn-search-nav">▲</button>
+                        <button onclick="nextMatch()" class="btn-search-nav">▼</button>
+                    </div>
+                </div>
+
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
+
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
+
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
+
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
+
+            <article id="content">
+                <h1 id="firstHeading">Manual técnico de terminales</h1>
+                <div id="siteSub">
+                    Directiva de Seguridad Telemática ART-09 | Protocolo de Invisibilidad Digital <b>(Versión I-3,
+                        2038)</b> — <span class="restricted">Difusión
+                        limitada a
+                        ciudadanos</span>
+                </div>
+
+                <section class="article-section">
+                    <h2>1. Higiene Digital Obligatoria</h2>
+                    <p>La seguridad del Hollow depende de nuestro rastro en la red. Todo archivo que abandone el nodo
+                        local debe ser
+                        procesado.</p>
+                    <ul>
+                        <li><strong>Limpieza de Metadatos:</strong> Es obligatorio el uso de la aplicación
+                            <i>ART-Scrubber</i>
+                            (preinstalada) en toda foto o documento antes de subirlo a nubes externas. Esto elimina
+                            coordenadas GPS, ID
+                            del dispositivo y marcas temporales.
+                        </li>
+                        <li><strong>Geolocalización:</strong> Queda terminantemente prohibido revelar la ubicación
+                            física del enclave,
+                            ya sea mediante texto, puntos de referencia en fotos o etiquetas de "check-in".</li>
+                        <li><strong>Cifrado:</strong> Todo intercambio de información sensible debe realizarse bajo el
+                            protocolo de
+                            túnel privado del Trust.</li>
+                    </ul>
+                </section>
+
+                <section class="article-section">
+                    <div class="art-note">
+                        <h4>💡 Recomendación ART</h4>
+                        <p>Utilice la aplicación <i>ART-VPN</i> para cifrar todo su tráfico de datos saliente. Está
+                            preinstalada y
+                            configurada para funcionar automáticamente en segundo plano.</p>
+                    </div>
+                    <h2>2. Uso de Redes Sociales y Exposición Pública</h2>
+                    <div class="salary-box">
+                        <h4>📵 Política de Redes Sociales</h4>
+                        <p>
+                            El Trust reconoce la necesidad de interacción social externa, pero bajo monitorización
+                            activa. Por lo tanto, el uso de redes sociales personales (Facebook, Twitter, Instagram,
+                            TikTok, etc.) está
+                            permitido bajo las
+                            siguientes condiciones:
+                        </p>
+                        <ul>
+                            <li><strong>Filtro de ºInstalaciones:</strong> No se permite publicar imágenes de perímetros
+                                de seguridad,
+                                infraestructuras del Nivel 4 o sistemas de ventilación.</li>
+                            <li><strong>Protección de terceros:</strong> Asegúrese de que ningún ciudadano sensible o
+                                personal de los
+                                Custodios aparezca de fondo en sus publicaciones.</li>
+                            <li><strong>Monitorización:</strong> Los algoritmos del Trust analizan el contenido
+                                saliente. Publicaciones
+                                que comprometan la seguridad serán eliminadas automáticamente y el ciudadano recibirá
+                                una sanción de
+                                Nivel 1.</li>
+                            <li><strong>Reportes automáticos:</strong> Cualquier publicación que reciba más de 100
+                                interacciones en menos de
+                                10 minutos será marcada para revisión manual por el equipo de seguridad del Trust.
+                            </li>
+                            <li><strong>Prohibición de transmisiones en vivo:</strong> Queda prohibido el uso de
+                                transmisiones en vivo (live
+                                streaming) desde el enclave para evitar fugas de información en tiempo real.
+                            </li>
+                            <li><strong>Lenguaje y comportamiento:</strong> Se espera que los ciudadanos mantengan un
+                                comportamiento respetuoso y
+                                profesional en todas las plataformas públicas. Insultos, amenazas o lenguaje
+                                inapropiado serán sancionados
+                                según el Código de Conducta ART.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="art-note critical">
+                        <h4>❗ Aviso Importante</h4>
+                        <p>El incumplimiento de las directrices de este manual puede conllevar sanciones que van desde
+                            la
+                            revocación temporal del
+                            servicio hasta la confiscación del terminal y sanciones administrativas según el Código de
+                            Conducta ART.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="article-section">
+                    <h2>3. Gestión de redes y E-SIM ART</h2>
+                    <p>El uso de redes públicas, tarjetas físicas de terceros o servicios de roaming externo está
+                        prohibido por motivos
+                        de interceptación.</p>
+
+                    <table class="wikitable">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Alcance</th>
+                                <th>Coste</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Llamadas internas</b></td>
+                                <td>Entre miembros del Enclave</td>
+                                <td><span style="color: #28a745; font-weight: bold;">Gratuito</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Datos (Internet)</b></td>
+                                <td>500GB / mes (Alta velocidad)</td>
+                                <td><span style="color: #28a745; font-weight: bold;">Gratuito*</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Llamadas externas</b></td>
+                                <td>Nacionales e internacionales</td>
+                                <td>Tarifa básica (Monitorizada)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.8em; font-style: italic;">*Superar el límite de 500GB supondrá una reducción
+                        de velocidad a
+                        128kbps salvo solicitud justificada por motivos laborales.</p>
+                </section>
+
+                <section>
+                    <div class="art-note">
+                        <h4>Bandas de emergencia</h4>
+                        <p>Las bandas de frecuencia entre <b>136-174 MHz</b> y <b>400-470 MHz</b> están reservadas
+                            exclusivamente para
+                            canales de emergencia y seguridad del Trust.</p>
+                        <p>El uso de equipos de radioaficionado o transceptores sin licencia específica en estas
+                            frecuencias se
+                            considera una <strong>Interferencia Crítica</strong> y conlleva la incautación del equipo.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="article-section">
+                    <h2>4. Integridad del terminal</h2>
+                    <p>Su terminal no es solo un teléfono; es su llave de acceso y su monitor de salud.</p>
+                    <ul>
+                        <li><strong>Actualizaciones:</strong> Las actualizaciones de seguridad "Zero-Day" se fuerzan a
+                            las 03:00 AM. No
+                            apague el dispositivo.</li>
+                        <li><strong>Daños físicos:</strong> Si la pantalla o los sensores biométricos se dañan, acuda
+                            al Command Post (Planta Técnica) para una sustitución inmediata.</li>
+                        <li><strong>Software no autorizado:</strong> La instalación de software no aprobado por el
+                            Trust está prohibida y
+                            será detectada por los sistemas de monitorización.</li>
+                        <li><strong>Revisiones periódicas:</strong> Todo terminal debe pasar una revisión técnica cada 6
+                            meses en el Centro de
+                            Soporte ART.</li>
+                        <li><strong>Respaldo de datos:</strong> Utilice la aplicación <i>ART-Backup</i> para realizar
+                            copias de seguridad
+                            automáticas en la nube segura del Trust.</li>
+                        <li><strong>Protocolo de pérdida o robo:</strong> En caso de pérdida o robo del terminal,
+                            informe
+                            inmediatamente al
+                            departamento de seguridad para proceder a la desactivación remota y rastreo del dispositivo.
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="article-section" id="referencias">
+                    <h2>Referencias y Documentación Relacionada</h2>
+                    <ul>
+                        <li><b>Eventos:</b> <a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                        <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
+                        <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
+
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

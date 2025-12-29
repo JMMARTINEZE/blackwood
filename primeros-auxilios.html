@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/artlogo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="app-grid">
+
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
+            </a>
+
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="estado.html">Estado Actual</a></li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="guia-residente.html">Guía del Residente</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="cartografia-tuneles.html">Cartografía de Túneles</a></li>
+                    <li><a href="logistica-suministros.html">Logística y Suministros</a></li>
+                    <li><a href="primeros-auxilios.html">Primeros Auxilios ART</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li><a href="manual-tecnico.html">Manual Técnico de Terminales</a></li>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main-wrapper">
+
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Inicio</a>
+                    <a href="protocolos-seguridad.html">
+                        <b>ESTADO DE ALERTA</b> <span class="status-text-green">Estabilidad (Verde)</span>
+                    </a>
+                </nav>
+
+                <div id="search-box" style="display: flex; align-items: center; gap: 5px;">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART...">
+                    <div id="search-nav" style="display: none; align-items: center; gap: 5px;">
+                        <span id="search-count"
+                            style="font-size: 0.75em; font-family: monospace; color: #888; margin-right: 5px;">0/0</span>
+                        <button onclick="prevMatch()" class="btn-search-nav">▲</button>
+                        <button onclick="nextMatch()" class="btn-search-nav">▼</button>
+                    </div>
+                </div>
+
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
+
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
+
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
+
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
+
+            <article id="content">
+                <h1 id="firstHeading">Primeros auxilios y asistencia médica</h1>
+                <div id="siteSub">
+                    Protocolos de Salud Pública ART-Med | Red Hospitalaria Hollow <b>(Versión VI-1, 2050)</b> — <span
+                        class="restricted">Difusión
+                        limitada a
+                        ciudadanos</span>
+                </div>
+
+                <section class="logistics-section">
+                    <div class="emergency-box"
+                        style="border-color: #28a745; background: rgba(40, 167, 69, 0.05); margin-bottom: 25px;">
+                        <h4 style="margin-top: 0; color: #28a745;">🛰️ Sincronización de Constantes Vitales</h4>
+                        <p>Todo ciudadano debe portar su <strong>Brazalete de Salud ART</strong> en la muñeca izquierda
+                            de forma
+                            permanente. Este dispositivo monitoriza ritmo cardíaco, saturación de oxígeno y niveles de
+                            glucosa.</p>
+                        <p style="font-size: 0.85em; font-style: italic;">En caso de síncope o arritmia crítica, el
+                            brazalete emitirá
+                            una alerta automática a la central del Nivel 4 enviando su geolocalización exacta.</p>
+                    </div>
+                </section>
+
+                <section class="logistics-section">
+                    <h2>1. Centro de Atención Primaria y Profilaxis</h2>
+                    <p>Ubicado sobre la Tienda de Conveniencia Central. Incluye farmacia 24h y consultas de medicina
+                        general.</p>
+
+                    <div
+                        style="border: 1px solid #ffc107; padding: 15px; background: rgba(255, 193, 7, 0.05); border-radius: 4px;">
+                        <h4 style="margin-top: 0; color: #d39e00;">⚠️ Zona de Cuarentena (Protocolo de Retorno)</h4>
+                        <p>Cualquier ciudadano que regrese del exterior con síntomas de origen desconocido
+                            (fiebre súbita,
+                            exantemas o fatiga extrema) será derivado directamente a las celdas de observación del Nivel
+                            4 por un
+                            periodo de 24 a 72 horas para asegurar la integridad biológica del Hollow.</p>
+                    </div>
+                </section>
+
+                <section class="logistics-section">
+                    <h2>2. Unidad Hospitalaria y Servicios Quirúrgicos</h2>
+                    <p>El Nivel 4 alberga quirófanos para intervenciones críticas. La política de acceso se rige por la
+                        siguiente tabla
+                        de prioridades:</p>
+
+                    <table class="wikitable">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Prioridad</th>
+                                <th>Coste</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Cirugía de Emergencia</b></td>
+                                <td>Máxima (Triage Inmediato)</td>
+                                <td>Gratuito</td>
+                            </tr>
+                            <tr>
+                                <td><b>Cirugía Reparadora</b></td>
+                                <td>Alta (Accidentes laborales/campo)</td>
+                                <td>Gratuito</td>
+                            </tr>
+                            <tr>
+                                <td><b>Estética Pediátrica</b></td>
+                                <td>Preferente (Menores de edad)</td>
+                                <td>Gratuito*</td>
+                            </tr>
+                            <tr>
+                                <td><b>Cirugía Estética Personal</b></td>
+                                <td>Baja (Sujeta a disponibilidad)</td>
+                                <td><b style="color: #dc3545;">+200% Tasa Especial</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="art-note critical">
+                        <p><strong>NOTA SOBRE CIRUGÍA ESTÉTICA:</strong></p>
+                        <p><u>Las cirugías estéticas aplicada a menores o por motivo de emergencia están incluidas en la
+                                cobertura básica.</u></p>
+                        <br>
+                        <p>
+                            Las intervenciones por razones puramente
+                            personales (aumentos,
+                            retoques de rejuvenecimiento, etc.) <strong>no</strong> forman parte de la cobertura básica.
+                        </p>
+                        <ul>
+                            <li>Se aplica un recargo del <strong>200%</strong> sobre el precio de mercado exterior.</li>
+                            <li><strong>Importante:</strong> Estas tasas son de carácter impositivo fijo y <span
+                                    style="text-decoration: underline;">no pueden ser reducidas</span> mediante bonos de
+                                reciclaje,
+                                mérito social ni descuentos de fidelidad.</li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <section class="logistics-section">
+                    <h2>3. Traslado a Hospitales Externos</h2>
+                    <p>Derivaciones críticas para las que el equipamiento del Hollow resulte insuficiente:</p>
+                    <ul>
+                        <li><strong>Acompañamiento:</strong> Se permite el traslado de familiares directos.</li>
+                        <li><strong>Custodia obligatoria:</strong> Un Custodio del Valle supervisará el ingreso y alta.
+                            Si el ciudadano
+                            está clasificado como <i>Sujeto de Interés</i>, la custodia será realizada por personal
+                            táctico armado.</li>
+                    </ul>
+                </section>
+                <section class="logistics-section">
+                    <h2 style="color: #dc3545;">🚨 PROTOCOLO DE RESPUESTA INMEDIATA</h2>
+                    <p>Ante cualquier incidencia que ponga en peligro la integridad física o psíquica, active el botón
+                        de pánico en su
+                        terminal móvil o marque el <b>(304) 555-ART-911</b>.</p>
+
+                    <div class="emergency-table-container">
+                        <h4>Manual de Triage de Campo (Uso Ciudadano)</h4>
+                        <table class="wikitable">
+                            <thead>
+                                <tr>
+                                    <th>Síntoma / Incidente</th>
+                                    <th>Gravedad</th>
+                                    <th>Acción Inmediata</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>Hemorragia Ordinaria</b></td>
+                                    <td><span style="color: #ffc107;">🟡 MEDIA</span></td>
+                                    <td>Presión directa. Acudir a Clínica de Superficie.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Fractura ósea simple</b></td>
+                                    <td><span style="color: #ffc107;">🟡 MEDIA</span></td>
+                                    <td>Inmovilizar extremidad. Acudir a Clínica de Superficie.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Quemadura leve (1º y 2º grado)</b></td>
+                                    <td><span style="color: #ffc107;">🟡 MEDIA</span></td>
+                                    <td>Enfriar con agua. Aplicar apósito estéril. Acudir a Clínica de Superficie.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Cristalización de la piel / Brillo azulado</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td><b>NO TOCAR.</b> Aislar al afectado. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Fractura ósea compuesta / Múltiple</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Inmovilizar extremidad. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Quemadura grave (3º grado)</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Cubrir con apósito estéril. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Shock por pérdida de sangre</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Colocar en posición de Trendelenburg. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Asfixia / Dificultad respiratoria</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Posición semi-sentada. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Concentración de paradoja severa</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Administrar autoinyector si dispone. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Herida por arma blanca o de fuego</b></td>
+                                    <td><span style="color: #fd7e14;">🟠 ALTA</span></td>
+                                    <td>Presión directa. Torniquete si es necesario. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Pérdida de extremidad</b></td>
+                                    <td><span style="color: #dc3545;">🔴 CRÍTICA</span></td>
+                                    <td>Torniquete inmediato. Uso de aplicación móvil para extracción.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Convulsiones / Pérdida de conciencia</b></td>
+                                    <td><span style="color: #dc3545;">🔴 CRÍTICA</span></td>
+                                    <td>Colocar en posición lateral de seguridad. Llamada al (304) 555-ART-911.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Contacto visual con entidad hostil</b></td>
+                                    <td><span style="color: #dc3545;">🔴 CRÍTICA</span></td>
+                                    <td><b>HUIR.</b> No establecer contacto visual ni verbal. Uso de aplicación móvil
+                                        para extracción.</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Herida por exposición a grieta</b></td>
+                                    <td><span style="color: #dc3545;">🔴 CRÍTICA</span></td>
+                                    <td>Aislar al afectado. Llamada al (304) 555-ART-911. No tocar la herida.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h4>Instrucciones Generales de Socorro:</h4>
+                        <p>Independientemente de si posee formación médica o no, en casos <b>Nivel Naranja o Rojo</b>,
+                            la intervención
+                            ciudadana debe limitarse a la estabilización básica. El Trust garantiza la llegada de un
+                            equipo
+                            médico-táctico en menos de 4 minutos dentro del enclave.</p>
+                        <p><em>"Su vida es el recurso más valioso de Blackwood Hollow. No intente ser un héroe contra lo
+                                que no puede
+                                comprender. Use la red."</em></p>
+                    </div>
+                </section>
+
+                <section class="article-section" id="referencias">
+                    <h2>Referencias y Documentación Relacionada</h2>
+                    <ul>
+                        <li><b>Logística y suministros:</b> <a href="logistica-suministros.html">Manual de Logística y
+                                Suministros</a>.</li>
+                        <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
+
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
