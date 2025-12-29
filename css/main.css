@@ -555,3 +555,41 @@ body.dark-mode #main-footer {
     opacity: 0.7;
 }
 
+/* bUSCADOR AVANZADO EN SIDEBAR */
+/* Resaltado estilo terminal/fluorescente */
+.art-highlight {
+    background-color: #28a745; /* Verde ART */
+    color: white;
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
+}
+
+/* Estilo para el input de búsqueda cuando está activo */
+#search-input:focus {
+    border-bottom: 2px solid #28a745;
+    outline: none;
+}
+.btn-search-nav {
+    background: var(--border-color, #ddd);
+    border: 1px solid #888;
+    color: var(--text-color, #333);
+    cursor: pointer;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.btn-search-nav:hover {
+    background: #28a745;
+    color: white;
+}
+
+/* Estilo para que el contador parezca una terminal */
+#search-count {
+    background: rgba(0,0,0,0.05);
+    padding: 2px 5px;
+    border-radius: 3px;
+}

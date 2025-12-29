@@ -75,9 +75,15 @@
                     <a href="#" class="new">Discusión</a>
                 </nav>
 
-                <div id="search-box">
+                <div id="search-box" style="display: flex; align-items: center; gap: 5px;">
                     <span>🔍</span>
-                    <input type="text" id="search-input" placeholder="Buscar en el informe ART">
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART...">
+                    <div id="search-nav" style="display: none; align-items: center; gap: 5px;">
+                        <span id="search-count"
+                            style="font-size: 0.75em; font-family: monospace; color: #888; margin-right: 5px;">0/0</span>
+                        <button onclick="prevMatch()" class="btn-search-nav">▲</button>
+                        <button onclick="nextMatch()" class="btn-search-nav">▼</button>
+                    </div>
                 </div>
 
                 <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
