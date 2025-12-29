@@ -1,6 +1,6 @@
 /**
  * ARCHIVO PRINCIPAL DE INTERFAZ - APPALACHIAN RESURGENCE TRUST (ART)
- * Versión: 2050.12.29
+ * Versión: 2050.11.29
  */
 
 document.addEventListener('DOMContentLoaded', () => {

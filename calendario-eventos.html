@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/artlogo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/calendario.css">
+</head>
+
+<body>
+
+    <div id="app-grid">
+
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
+            </a>
+
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="estado.html">Estado Actual</a></li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="guia-residente.html">Guía del Residente</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="#">Cartografía de Túneles</a></li>
+                    <li><a href="#">Logística y Suministros</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main-wrapper">
+
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Artículo</a>
+                    <a href="#" class="new">Discusión</a>
+                </nav>
+
+                <div id="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART">
+                </div>
+
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
+
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
+
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
+
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
+
+            <article id="content">
+                <h1 id="firstHeading">Calendario Operativo 2050</h1>
+                <div id="siteSub">
+                    Sincronización con el Nodo Central: <b>ACTUALIZADA</b> — <span class="restricted">Uso exclusivo para
+                        residentes</span>
+                </div>
+
+                <section class="article-section">
+                    <p>Cronograma unificado de actividades del Enclave. Se recuerda que la asistencia a los eventos de
+                        <b>Seguridad</b>
+                        y <b>Administración</b> es obligatoria según el nivel de acreditación.
+                    </p>
+
+                    <aside class="event-sidebar"
+                        style="float: right; width: 280px; margin: 0 0 20px 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+                        <div
+                            style="background: var(--nav-bg-color, #eee); color: var(--text-color, #333); padding: 10px; border-radius: 5px 5px 0 0; border-bottom: 3px solid #dc3545;">
+                            <h4 style="margin: 0; font-size: 0.9em; letter-spacing: 1px;">📢 AVISOS PRIORITARIOS:
+                                DIC-2050</h4>
+                        </div>
+
+                        <div
+                            style="border: 1px solid #ddd; border-top: none; background: #fff; padding: 15px; border-radius: 0 0 5px 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+
+                            <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                                <span
+                                    style="background: #dc3545; color: #fff; font-size: 0.7em; padding: 2px 5px; border-radius: 3px; font-weight: bold;">SEGURIDAD
+                                    CRÍTICA</span>
+                                <p style="margin: 5px 0 0; font-weight: bold; font-size: 0.9em;">Auditoría de Silencio
+                                    Térmico</p>
+                                <p style="margin: 0; font-size: 0.85em; color: #666;">Del 15 al 20 de dic. Se prohíbe el
+                                    uso de generadores
+                                    auxiliares externos. El Command Post monitorizará fugas de calor.</p>
+                            </div>
+
+                            <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                                <span
+                                    style="background: #28a745; color: #fff; font-size: 0.7em; padding: 2px 5px; border-radius: 3px; font-weight: bold;">FESTIVIDAD</span>
+                                <p style="margin: 5px 0 0; font-weight: bold; font-size: 0.9em;">Gran Brindis del
+                                    "Hollow Bar"</p>
+                                <p style="margin: 0; font-size: 0.85em; color: #666;">24 de dic, 21:00h. Evento laico.
+                                    Ración de cortesía de
+                                    sidra local para todos los residentes acreditados.</p>
+                            </div>
+
+                            <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
+                                <span
+                                    style="background: #007bff; color: #fff; font-size: 0.7em; padding: 2px 5px; border-radius: 3px; font-weight: bold;">COMUNIDAD</span>
+                                <p style="margin: 5px 0 0; font-weight: bold; font-size: 0.9em;">Misa del Alba /
+                                    Ceremonia de Luz</p>
+                                <p style="margin: 0; font-size: 0.85em; color: #666;">25 de dic, 07:00h en la Capilla
+                                    Multiconfesional del
+                                    Nivel 2.</p>
+                            </div>
+
+                            <div
+                                style="background: #fff3cd; border: 1px solid #ffeeba; padding: 10px; border-radius: 3px;">
+                                <p style="margin: 0; font-size: 0.8em; color: #856404; font-weight: bold;">⚠️ REVISIÓN
+                                    ANUAL</p>
+                                <p style="margin: 0; font-size: 0.8em; color: #856404;">Fecha límite para renovar
+                                    salvoconductos de
+                                    transporte: 31 de diciembre.</p>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <div id="calendar-filters"
+                        style="margin-bottom: 20px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-filter active" onclick="filterEvents('all', this)">Todos</button>
+                        <button class="btn-filter" onclick="filterEvents('cultura', this)"
+                            style="border-left: 4px solid #4720c9;">Cultura</button>
+                        <button class="btn-filter" onclick="filterEvents('deporte', this)"
+                            style="border-left: 4px solid #28a745;">Deporte</button>
+                        <button class="btn-filter" onclick="filterEvents('admin', this)"
+                            style="border-left: 4px solid #ffc107;">Admin</button>
+                        <button class="btn-filter" onclick="filterEvents('seguridad', this)"
+                            style="border-left: 4px solid #dc3545;">Seguridad</button>
+                    </div>
+
+                    <div id="events-list">
+                        <h3 class="month-header">Enero 2050</h3>
+                        <div class="event-item cultura">
+                            <span class="event-date">01 Ene</span>
+                            <div class="event-details">
+                                <strong>Concierto de Año Nuevo en el Anfiteatro</strong>
+                                <p>Actuación de la Orquesta Sinfónica de Appalachia. Entrada libre para residentes
+                                    acreditados.</p>
+                            </div>
+                        </div>
+                        <div class="event-item deporte">
+                            <span class="event-date">08 Ene</span>
+                            <div class="event-details">
+                                <strong>Torneo de Fútbol Americano "Hollow Bowl"</strong>
+                                <p>Equipos mixtos. Inscripción previa en el Polideportivo Central.</p>
+                            </div>
+                        </div>
+                        <div class="event-item seguridad">
+                            <span class="event-date">12 Ene</span>
+                            <div class="event-details">
+                                <strong>Simulacro de Cierre de Perímetro (Fase 1)</strong>
+                                <p>Prueba de los inhibidores de señal y protocolos de ocultación. Permanecer en
+                                    interiores.</p>
+                            </div>
+                        </div>
+
+                        <div class="event-item admin">
+                            <span class="event-date">25 Ene</span>
+                            <div class="event-details">
+                                <strong>Vuelo del Cuervo: Primera Convocatoria</strong>
+                                <p>Examen de aptitud para residentes >14 años. Registro previo en The Command Post.</p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Febrero 2050</h3>
+                        <div class="event-item deporte">
+                            <span class="event-date">14 Feb</span>
+                            <div class="event-details">
+                                <strong>Torneo de Baloncesto "Hollow Hoops"</strong>
+                                <p>Equipos mixtos. Inscripción previa en el Polideportivo Central.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">23 Feb</span>
+                            <div class="event-details">
+                                <strong>Revisión Trimestral de Acreditaciones</strong>
+                                <p>Actualización de datos personales y revisión médica en el Centro de Residentes.
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Marzo 2050</h3>
+                        <div class="event-item admin">
+                            <span class="event-date">10 Mar</span>
+                            <div class="event-details">
+                                <strong>Jornada de Actualización de Protocolos ART</strong>
+                                <p>Sesiones informativas obligatorias en el Auditorio Principal. Horarios según
+                                    acreditación.</p>
+                            </div>
+                        </div>
+                        <div class="event-item seguridad">
+                            <span class="event-date">18 Mar</span>
+                            <div class="event-details">
+                                <strong>Simulacro de Cierre de Perímetro (Fase 2)</strong>
+                                <p>Evaluación de respuesta ante brechas de seguridad. Mantener la calma y seguir
+                                    instrucciones oficiales.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">27 Mar</span>
+                            <div class="event-details">
+                                <strong>Festival de Primavera "Renacer en el Hollow"</strong>
+                                <p>Mercado de artesanía local, música en vivo y actividades para todas las edades en
+                                    el Parque Central.</p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Abril 2050</h3>
+                        <div class="event-item cultura">
+                            <span class="event-date">05 Abr</span>
+                            <div class="event-details">
+                                <strong>Taller de Supervivencia Urbana</strong>
+                                <p>Curso intensivo de 3 días en el Centro de Entrenamiento ART. Inscripción previa
+                                    obligatoria.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">18 Abr</span>
+                            <div class="event-details">
+                                <strong>Revisión Trimestral de Acreditaciones</strong>
+                                <p>Actualización de datos personales y revisión médica en el Centro de Residentes.
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Mayo 2050</h3>
+                        <div class="event-item admin">
+                            <span class="event-date">15 May</span>
+                            <div class="event-details">
+                                <strong>Revisión Semestral de Acreditaciones</strong>
+                                <p>Actualización de datos personales y revisión médica en el Centro de Residentes.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="event-item deporte">
+                            <span class="event-date">28 May</span>
+                            <div class="event-details">
+                                <strong>Maratón del Valle de Blackwood</strong>
+                                <p>Recorrido de 42 km por senderos autorizados. Inscripción en el Polideportivo
+                                    Central.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">30 May</span>
+                            <div class="event-details">
+                                <strong>Exposición de Arte Local: "Visiones del Renacer"</strong>
+                                <p>Galería temporal en el Centro Cultural. Obras de artistas residentes y
+                                    colaboradores externos.</p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Junio 2050</h3>
+                        <div class="event-item deporte">
+                            <span class="event-date">05 Jun</span>
+                            <div class="event-details">
+                                <strong>Simulación de Combate: Captura la Bandera</strong>
+                                <p>Ubicación: Sector Bosque Norte. Equipamiento de pintura táctica suministrado por ART.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="event-item seguridad">
+                            <span class="event-date">15 Jun</span>
+                            <div class="event-details">
+                                <strong>Ejercicio de Respuesta Rápida ART</strong>
+                                <p>Evaluación de protocolos de emergencia. Seguir instrucciones del personal de
+                                    seguridad.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">18 Jun</span>
+                            <div class="event-details">
+                                <strong>Foro Comunitario: Propuestas para el Segundo Semestre</strong>
+                                <p>Reunión abierta en el Salón de Actos del Nivel 1. Presentación de iniciativas por
+                                    parte de residentes.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">21 Jun</span>
+                            <div class="event-details">
+                                <strong>Fiesta del Solsticio (Summer Bash)</strong>
+                                <p>Concierto de bandas locales en el anfiteatro. Raciones especiales de barbacoa
+                                    disponibles.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">18 Jun</span>
+                            <div class="event-details">
+                                <strong>Vuelo del Cuervo: Segunda Convocatoria</strong>
+                                <p>Examen de aptitud para residentes >14 años. Registro previo en The Command Post.</p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Julio 2050</h3>
+                        <div class="event-item deporte">
+                            <span class="event-date">05 Jul</span>
+                            <div class="event-details">
+                                <strong>Simulación de Combate: Captura la Bandera</strong>
+                                <p>Ubicación: Sector Bosque Norte. Equipamiento de pintura táctica suministrado por ART.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="event-item seguridad">
+                            <span class="event-date">15 Jul</span>
+                            <div class="event-details">
+                                <strong>Ejercicio de Respuesta Rápida ART</strong>
+                                <p>Evaluación de protocolos de emergencia. Seguir instrucciones del personal de
+                                    seguridad.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">20 Jul</span>
+                            <div class="event-details">
+                                <strong>Noche de Astronomía en el Observatorio ART</strong>
+                                <p>Sesión de observación estelar y charla sobre constelaciones. Inscripción previa
+                                    obligatoria.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">28 Jul</span>
+                            <div class="event-details">
+                                <strong>Festival de Cine Independiente "Hollow Screens"</strong>
+                                <p>Proyecciones al aire libre en el Parque Central. Entrada libre para residentes
+                                    acreditados.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">30 Jul</span>
+                            <div class="event-details">
+                                <strong>Revisión Trimestral de Acreditaciones</strong>
+                                <p>Actualización de datos personales y revisión médica en el Centro de Residentes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="month-header">Agosto 2050</h3>
+                        <div class="event-item admin">
+                            <span class="event-date">10 Ago</span>
+                            <div class="event-details">
+                                <strong>Jornada de Puertas Abiertas en el Centro de Residentes</strong>
+                                <p>Visitas guiadas y presentación de servicios disponibles para residentes y
+                                    acreditados.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">12 Ago</span>
+                            <div class="event-details">
+                                <strong>Viaje a la playa</strong>
+                                <p>Excursión de una semana a la costa este. Plazas limitadas, inscripción previa en el
+                                    Centro de Residentes.</p>
+                            </div>
+                        </div>
+                        <div class="event-item seguridad">
+                            <span class="event-date">16 Ago</span>
+                            <div class="event-details">
+                                <strong>Simulacro de Evacuación por Brecha de Seguridad</strong>
+                                <p>Prueba de protocolos de evacuación. Seguir instrucciones del personal de seguridad
+                                    en todo momento.</p>
+                            </div>
+                        </div>
+                        <div class="event-item deporte">
+                            <span class="event-date">22 Ago</span>
+                            <div class="event-details">
+                                <strong>Torneo de Baloncesto "Hollow Hoops"</strong>
+                                <p>Equipos mixtos. Inscripción previa en el Polideportivo Central.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="month-header">Octubre 2050</h3>
+                        <div class="event-item deporte">
+                            <span class="event-date">14 Oct</span>
+                            <div class="event-details">
+                                <strong>Supervivencia Extrema: Las Crestas</strong>
+                                <p>Evento de 48h en montaña. Obligatorio kit de emergencia ART-V2.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">28 Oct</span>
+                            <div class="event-details">
+                                <strong>Revisión Trimestral de Acreditaciones</strong>
+                                <p>Actualización de datos personales y revisión médica en el Centro de Residentes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="event-item cultura">
+                            <span class="event-date">31 Oct</span>
+                            <div class="event-details">
+                                <strong>Cine Forum: Clásicos de la Era Antigua</strong>
+                                <p>Proyección en la Biblioteca. Debate posterior sobre la caída de la civilización
+                                    lineal.</p>
+                            </div>
+                        </div>
+
+                        <div class="event-item cultura">
+                            <span class="event-date">31 Oct</span>
+                            <div class="event-details">
+                                <strong>Noche de Halloween en el Hollow Bar</strong>
+                                <p>Concurso de disfraces y música en vivo. Premios para los mejores disfraces.</p>
+                            </div>
+                        </div>
+                        <h3 class="month-header">Diciembre 2050</h3>
+                        <div class="event-item deporte">
+                            <span class="event-date">10 Dic</span>
+                            <div class="event-details">
+                                <strong>Torneo de Natación Invernal</strong>
+                                <p>Prueba de resistencia en la piscina climatizada. Inscripción previa en el
+                                    Polideportivo Central.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">15 Dic</span>
+                            <div class="event-details">
+                                <strong>Jornada de Actualización de Protocolos ART</strong>
+                                <p>Sesiones informativas obligatorias en el Auditorio Principal. Horarios según
+                                    acreditación.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">20 Diciembre</span>
+                            <div class="event-details">
+                                <strong>Vuelo del Cuervo: Tercera Convocatoria</strong>
+                                <p>Examen de aptitud para residentes >14 años. Registro previo en The Command Post.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">24 Dic</span>
+                            <div class="event-details">
+                                <strong>Gran Brindis del "Hollow Bar"</strong>
+                                <p>Evento laico. Ración de cortesía de sidra local para todos los residentes
+                                    acreditados.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">25 Dic</span>
+                            <div class="event-details">
+                                <strong>Misa del Alba / Ceremonia de Luz</strong>
+                                <p>07:00h en la Capilla Multiconfesional del Nivel 2.</p>
+                            </div>
+                        </div>
+                        <div class="event-item deporte">
+                            <span class="event-date">26 Dic</span>
+                            <div class="event-details">
+                                <strong>Prueba de Resistencia en el Campo de Entrenamiento</strong>
+                                <p>Prueba física obligatoria para residentes. Inscripción previa en el Polideportivo
+                                    Central.</p>
+                            </div>
+                        </div>
+                        <div class="event-item admin">
+                            <span class="event-date">31 Dic</span>
+                            <div class="event-details">
+                                <strong>Revisión Anual de Salvoconductos de Transporte</strong>
+                                <p>Fecha límite para renovar salvoconductos de transporte. Evitar sanciones.</p>
+                            </div>
+                        </div>
+                        <div class="event-item cultura">
+                            <span class="event-date">31 Dic</span>
+                            <div class="event-details">
+                                <strong>Fiesta de Fin de Año en el Anfiteatro</strong>
+                                <p>Celebración con música en vivo y fuegos artificiales. Entrada libre para
+                                    residentes acreditados.</p>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    </section>
+
+    <section class="article-section" id="referencias">
+        <h2>Referencias y Documentación Relacionada</h2>
+        <ul>
+            <li><b>Documento IV-B:</b> <a href="primeros-auxilios.html">Manual de Primeros Auxilios ante
+                    exposición a una <i>grieta</i>.
+                </a></li>
+            <li>
+                <a href="javascript:void(0)"
+                    onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no dispone de negocios a su nombre.\nEl intento ha sido registrado.')"
+                    style="color: #888;">
+                    Formulario de Solicitud de insumos para negocios locales.
+                </a>
+            </li>
+            <li><b>Eventos:</b> <a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+            <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
+            <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
+            </li>
+        </ul>
+    </section>
+    </article>
+    </main>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
+
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/calendar.js"></script>
+
+</body>
+
+</html>

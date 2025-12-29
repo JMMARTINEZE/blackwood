@@ -1,0 +1,70 @@
+/* ./css/calendario.css - Estilo Wikipedia Moderno / Informe ART */
+
+                    .month-header {
+                        background: #eee;
+                        padding: 5px 10px;
+                        border-left: 4px solid #333;
+                        margin-top: 25px;
+                    }
+
+                    .event-item {
+                        display: flex;
+                        align-items: flex-start;
+                        padding: 10px;
+                        border-bottom: 1px solid #eee;
+                        margin-bottom: 5px;
+                        background: #fff;
+                    }
+
+                    .event-date {
+                        min-width: 60px;
+                        font-weight: bold;
+                        color: #555;
+                        font-family: monospace;
+                    }
+
+                    .event-details strong {
+                        display: block;
+                        margin-bottom: 2px;
+                    }
+
+                    .event-details p {
+                        margin: 0;
+                        font-size: 0.9em;
+                        color: #666;
+                    }
+
+                    /* Colores por categoría */
+                    .cultura {
+                        border-left: 4px solid #4720c9;
+                    }
+
+                    .deporte {
+                        border-left: 4px solid #28a745;
+                    }
+
+                    .admin {
+                        border-left: 4px solid #ffc107;
+                    }
+
+                    .seguridad {
+                        border-left: 4px solid #dc3545;
+                    }
+
+                    .btn-filter {
+                        padding: 5px 15px;
+                        cursor: pointer;
+                        border: 1px solid #ccc;
+                        background: white;
+                    }
+
+                    .btn-filter:hover {
+                        background: #f0f0f0;
+                    }
+
+                    .btn-filter.active {
+                        background: #333;
+                        color: white;
+                        border-color: #333;
+                    }
+                
