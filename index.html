@@ -1,583 +1,812 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="icon" href="img/artlogo.png">
-    
+
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
-<div id="app-grid">
+    <div id="app-grid">
 
-    <aside id="sidebar">
-        <a id="logo-container" href="index.html">
-            <img src="img/artlogo.png" alt="ART Logo">
-        </a>
-
-        <nav class="portal">
-    <h3>Directorio Operativo</h3>
-    <ul>
-        <li><a href="index.html">Resumen del Enclave</a></li>
-        <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
-        <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
-        <li><a href="#">Censo de Residentes</a></li>
-    </ul>
-</nav>
-
-<nav class="portal">
-    <h3>Recursos de Campo</h3>
-    <ul>
-        <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444" target="_blank">Monitorización Climática</a></li>
-        <li><a href="#">Cartografía de Túneles</a></li>
-        <li><a href="#">Logística y Suministros</a></li>
-    </ul>
-</nav>
-
-<nav class="portal">
-    <h3>Terminal</h3>
-    <ul>
-        <li>
-            <a href="javascript:void(0)" onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')" style="color: #888;">
-                Solicitud de nivel 2
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
             </a>
-        </li>
-        
-        <li>
-            <a href="solicitud-ingreso.html">
-                Solicitud de Ingreso/Visita
-            </a>
-        </li>
 
-        <li>
-            <a href="javascript:void(0)" onclick="dispararEmergencia()" style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
-                [ EMERGENCIA ]
-            </a>
-        </li>
-    </ul>
-</nav>
-    </aside>
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="#">Censo de Residentes</a></li>
+                </ul>
+            </nav>
 
-    <main id="main-wrapper">
-        
-       <header id="sticky-header">
-    <nav class="top-links">
-        <a href="#" class="active">Artículo</a>
-        <a href="#" class="new">Discusión</a>
-    </nav>
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="#">Cartografía de Túneles</a></li>
+                    <li><a href="#">Logística y Suministros</a></li>
+                </ul>
+            </nav>
 
-    <div id="search-box">
-        <span>🔍</span>
-        <input type="text" id="search-input" placeholder="Buscar en el informe ART">
-    </div>
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
 
-    <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
-        
-        <div style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
-            <span style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
-            <span style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01 RESIDENTE</span>
-        </div>
-        
-        <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz" style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
-    ⚙️
-</button>
-    </div>
-</header>
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
 
-        <div id="appearance-menu">
-            <h4>Apariencia</h4>
-            <div class="control-group">
-                <span class="control-label">Tamaño del texto</span>
-                <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
-                <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A Estándar</button>
-                <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
-            </div>
-            <div class="control-group">
-                <span class="control-label">Ancho del contenido</span>
-                <button class="btn-wiki active" id="btn-width-std" onclick="setWidth('standard', this)">Estándar</button>
-                <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
-            </div>
-            <div class="control-group">
-                <span class="control-label">Color</span>
-                <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️ Claro</button>
-                <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
-            </div>
-        </div>
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-        <article id="content">
-            <div class="page-tools">
-                <a href="#">Leer</a>
-                <span>|</span>
-                <a href="#">Editar</a>
-                <span>|</span>
-                <a href="#">Ver historial</a>
-            </div>
+        <main id="main-wrapper">
 
-            <h1 id="firstHeading">Blackwood Hollow</h1>
-            <div id="siteSub">
-                Informe Interno Integrado <b>(Versión IV-4, 2050)</b> — <span class="restricted">Difusión limitada</span>
-            </div>
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Artículo</a>
+                    <a href="#" class="new">Discusión</a>
+                </nav>
 
-            <aside class="infobox">
-                <div class="infobox-title">
-                    Blackwood Hollow<br>
-                    <span style="font-size: 0.8em; font-weight: normal;"><i>The Hollow</i></span>
-                </div>
-                
-                <div class="infobox-image-container">
-                    <a href="img/hollow.png" target="_blank" title="Haga clic para ampliar">
-                        <img src="img/hollow.png" alt="Blackwood Hollow Landscape">
-                    </a>
+                <div id="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART">
                 </div>
 
-                <table>
-                    <tbody>
-                        <tr>
-                            <td colspan="2" style="text-align:center; background-color:var(--infobox-title-bg); font-weight:bold; font-size: 0.9em;">
-                                Villa incorporada
-                            </td>
-                        </tr>
-                        <tr><th>Coordenadas</th><td>37°24'45"N 81°31'12"W</td></tr>
-                        <tr><th>Condado</th><td>McDowell</td></tr>
-                        <tr><th>Entidad</th><td>Municipio (Villa)</td></tr>
-                        <tr><th>Gobernador</th><td>James "Jim" Vance</td></tr>
-                        <tr><th>Fundación</th><td>1892 (Campamento)<br>2038 (Reconstrucción)</td></tr>
-                        <tr><th>Fundador</th><td>Appalachian Resurgence Trust</td></tr>
-                        <tr><th>Superficie</th><td>4.12 km²</td></tr>
-                        <tr><th>Población</th><td>180 hab.</td></tr>
-                        <tr><th>Gentilicio</th><td>Blackwoodiano</td></tr>
-                        <tr><th>PIB</th><td>USD 7.2 millones</td></tr>
-                        <tr><th>Código ZIP</th><td>24801</td></tr>
-                        <tr><td colspan="2" style="text-align:center; border-top: 1px solid var(--border-color);"><a href="#">Sitio oficial ART</a></td></tr>
-                    </tbody>
-                </table>
-            </aside>
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
 
-            <section class="article-section">
-                <p><b>Blackwood Hollow</b> es una comunidad no incorporada ubicada en la región de los <a href="#">Apalaches</a>, en el norte de <a href="#">Pensilvania</a>, Estados Unidos. Se caracteriza por su aislamiento geográfico y su historial vinculado a la minería.</p>
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
 
-                <nav id="toc">
-    <strong>Índice</strong>
-    <ul>
-        <li><a href="#historia">1 Historia</a>
-            <ul>
-                <li><a href="#historia-origenes">1.1 Orígenes y Auge (1892-1954)</a></li>
-                <li><a href="#historia-desastre">1.2 Desastre y Abandono (1955-2037)</a></li>
-                <li><a href="#historia-reconstruccion">1.3 Reconstrucción y ART (2038-Presente)</a></li>
-            </ul>
-        </li>
-        <li><a href="#geografia">2 Geografía</a></li>
-        <li><a href="#demografia">3 Demografía</a>
-            <ul>
-                <li><a href="#demografia-estructura">3.1 Estructura Poblacional</a></li>
-            </ul>
-        </li>
-        <li><a href="#infraestructura">4 Infraestructura y Puntos de Interés</a></li>
-        </ul>
-</nav>
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
 
-                
-    <section id="historia" class="article-section">
-    <h2>Historia</h2>
-    
-    <h3>Orígenes y Auge del Carbón (1892-1954)</h3>
-    <p>
-        Blackwood Hollow fue fundado en 1892 por la Blackwood Coal & Coke Co. tras la identificación de una veta de carbón bituminoso de alta pureza en el Condado de McDowell. Durante las primeras décadas del siglo XX, el asentamiento funcionó como un típico “pueblo de compañía”: la empresa controlaba viviendas, tienda de suministros y lugares de culto.
-        En su apogeo, alrededor de 1924, la mina empleaba a más de 800 trabajadores, muchos de ellos inmigrantes europeos residentes en las laderas del valle.
-    </p>
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
 
-    <h3>Desastre de “The Deep Seam” y Abandono (1955-2037)</h3>
-    <p>
-        La actividad minera declinó tras el accidente de 1955, cuando una explosión de grisú provocó un colapso parcial de los niveles inferiores. La compañía decidió sellar la mina, ante la imposibilidad de asumir los costos de rescate y reconstrucción.
-        La pérdida de la fuente principal de ingresos y el agotamiento de vetas superficiales provocó un éxodo gradual. Para 1980, Blackwood Hollow figuraba como un pueblo fantasma en mapas regionales.
-    </p>
+            <article id="content">
+                <div class="page-tools">
+                    <a href="#">Leer</a>
+                    <span>|</span>
+                    <a href="#">Editar</a>
+                    <span>|</span>
+                    <a href="#">Ver historial</a>
+                </div>
 
-    <h3>Reconstrucción y el Appalachian Resurgence Trust (2038-Presente)</h3>
-    <p>
-        En 2038, el <i>Appalachian Resurgence Trust</i> (ART), una entidad privada de perfil opaco, adquirió los derechos de propiedad y concesiones mineras del valle.
-    </p>
+                <h1 id="firstHeading">Blackwood Hollow</h1>
+                <div id="siteSub">
+                    Informe Interno Integrado <b>(Versión IV-4, 2050)</b> — <span class="restricted">Difusión
+                        limitada</span>
+                </div>
 
-    <p>
-        Oficialmente, ART declaró que la adquisición tenía fines de “restauración ecológica y preservación histórica”. Bajo esta justificación, el valle fue discretamente reconstruido...
-    </p>
+                <aside class="infobox">
+                    <div class="infobox-title">
+                        Blackwood Hollow<br>
+                        <span style="font-size: 0.8em; font-weight: normal;"><i>The Hollow</i></span>
+                    </div>
 
-    <div class="art-note critical">
-        <p>Aunque la mayoría de la población permanece de manera voluntaria, la gestión de residentes y el acceso a recursos están sujetos a protocolos internos no divulgados públicamente. Información detallada sobre los beneficiarios del programa y las motivaciones del Trust se mantiene restringida.</p>
+                    <div class="infobox-image-container">
+                        <a href="img/hollow.png" target="_blank" title="Haga clic para ampliar">
+                            <img src="img/hollow.png" alt="Blackwood Hollow Landscape">
+                        </a>
+                    </div>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2"
+                                    style="text-align:center; background-color:var(--infobox-title-bg); font-weight:bold; font-size: 0.9em;">
+                                    Villa incorporada
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Coordenadas</th>
+                                <td>37°24'45"N 81°31'12"W</td>
+                            </tr>
+                            <tr>
+                                <th>Condado</th>
+                                <td>McDowell</td>
+                            </tr>
+                            <tr>
+                                <th>Entidad</th>
+                                <td>Municipio (Villa)</td>
+                            </tr>
+                            <tr>
+                                <th>Gobernador</th>
+                                <td>James "Jim" Vance</td>
+                            </tr>
+                            <tr>
+                                <th>Fundación</th>
+                                <td>1892 (Campamento)<br>2038 (Reconstrucción)</td>
+                            </tr>
+                            <tr>
+                                <th>Fundador</th>
+                                <td>Appalachian Resurgence Trust</td>
+                            </tr>
+                            <tr>
+                                <th>Superficie</th>
+                                <td>4.12 km²</td>
+                            </tr>
+                            <tr>
+                                <th>Población</th>
+                                <td>180 hab.</td>
+                            </tr>
+                            <tr>
+                                <th>Gentilicio</th>
+                                <td>Blackwoodiano</td>
+                            </tr>
+                            <tr>
+                                <th>PIB</th>
+                                <td>USD 7.2 millones</td>
+                            </tr>
+                            <tr>
+                                <th>Código ZIP</th>
+                                <td>24801</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:center; border-top: 1px solid var(--border-color);"><a
+                                        href="#">Sitio oficial ART</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </aside>
+
+                <section class="article-section">
+                    <p><b>Blackwood Hollow</b> es una comunidad no incorporada ubicada en la región de los <a
+                            href="#">Apalaches</a>, en el norte de <a href="#">Pensilvania</a>, Estados Unidos. Se
+                        caracteriza por su aislamiento geográfico y su historial vinculado a la minería.</p>
+
+                    <nav id="toc">
+                        <strong>Índice</strong>
+                        <ul>
+                            <li><a href="#historia">1 Historia</a>
+                                <ul>
+                                    <li><a href="#historia-origenes">1.1 Orígenes y Auge (1892-1954)</a></li>
+                                    <li><a href="#historia-desastre">1.2 Desastre y Abandono (1955-2037)</a></li>
+                                    <li><a href="#historia-reconstruccion">1.3 Reconstrucción y ART (2038-Presente)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#geografia">2 Geografía</a></li>
+                            <ul>
+                                <li><a href="#geografia-fisica">2.1 Relieve y accidentes geográficos</a></li>
+                                <li><a href="#geografia-clima">2.2 Clima</a></li>
+                                <li><a href="#geografia-flora">2.3 Flora y fauna</a></li>
+                                <li><a href="#geografia-comunicaciones">2.4 Comunicaciones y acceso</a></li>
+                            </ul>
+                            <li><a href="#demografia">3 Demografía</a>
+                                <ul>
+                                    <li><a href="#demografia-estructura">3.1 Estructura Poblacional</a></li>
+                                    <li><a href="#demografia-distribucion">3.2 Distribución y Dinámica</a></li>
+                                    <li><a href="#demografia-economia">3.3 Economía Local</a></li>
+                                    <li><a href="#demografia-cultura">3.4 Cultura y Sociedad</a></li>
+                                    <li><a href="#demografia-servicios">3.5 Servicios y Sostenibilidad</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#infraestructura">4 Infraestructura y Puntos de Interés</a></li>
+                            <ul>
+                                <li><a href="#infraestructura-administracion">4.1 Administración y Control</a></li>
+                                <li><a href="#infraestructura-educacion">4.2 Educación y Formación</a></li>
+                                <li><a href="#infraestructura-comercio">4.3 Comercio Local y Suministros</a></li>
+                                <li><a href="#infraestructura-ocio">4.4 Ocio y Vida Social</a></li>
+                                <li><a href="#infraestructura-seguridad">4.5 Seguridad y Sostenibilidad</a></li>
+                            </ul>
+                            <li><a href="#seguridad">5 Protocolos de Seguridad</a></li>
+                            <ul>
+                                <li><a href="#seguridad-arquitectura">5.1 Arquitectura de Ocultación Activa</a></li>
+                                <li><a href="#seguridad-orden">5.2 Orden Público y Custodia</a></li>
+                                <li><a href="#seguridad-transito">5.3 Control de Tránsito e Higiene Digital</a></li>
+                            </ul>
+                            <li><a href="#protocolo-egreso-fases">6 Protocolo de Egreso y Evaluación de Aptitud</a></li>
+                            <ul>
+                                <li><a href="#protocolo-egreso-requisitos">6.1 Requisitos de Egreso</a></li>
+                                <li><a href="#protocolo-egreso-fases">6.2 Fases del Examen de Aptitud</a></li>
+                                <li><a href="#protocolo-egreso-criterios">6.3 Criterios de Evaluación</a></li>
+                            </ul>
+                            <li><a href="#referencias">7 Referencias y Documentación Relacionada</a></li>
+                            <ul>
+                                <li><a href="#referencias-archivos">7.1 Archivos Corporativos y Legales</a></li>
+                                <li><a href="#referencias-educacion">7.2 Educación y Comunidad Juvenil</a></li>
+                                <li><a href="#referencias-externas">7.3 Fuentes Externas e Investigación (Acceso
+                                        Abierto)</a></li>
+                                <li><a href="#referencias-vease-tambien">7.4 Véase también</a></li>
+                            </ul>
+                    </nav>
+                </section>
+
+                <section id="historia" class="article-section">
+                    <h2>Historia</h2>
+
+                    <h3 id="historia-origenes">Orígenes y Auge del Carbón (1892-1954)</h3>
+                    <p>
+                        Blackwood Hollow fue fundado en 1892 por la Blackwood Coal & Coke Co. tras la identificación de
+                        una veta de carbón bituminoso de alta pureza en el Condado de McDowell. Durante las primeras
+                        décadas del siglo XX, el asentamiento funcionó como un típico “pueblo de compañía”: la empresa
+                        controlaba viviendas, tienda de suministros y lugares de culto.
+                        En su apogeo, alrededor de 1924, la mina empleaba a más de 800 trabajadores, muchos de ellos
+                        inmigrantes europeos residentes en las laderas del valle.
+                    </p>
+
+                    <h3 id="historia-desastre">Desastre de “The Deep Seam” y Abandono (1955-2037)</h3>
+                    <p>
+                        La actividad minera declinó tras el accidente de 1955, cuando una explosión de grisú provocó un
+                        colapso parcial de los niveles inferiores. La compañía decidió sellar la mina, ante la
+                        imposibilidad de asumir los costos de rescate y reconstrucción.
+                        La pérdida de la fuente principal de ingresos y el agotamiento de vetas superficiales provocó un
+                        éxodo gradual. Para 1980, Blackwood Hollow figuraba como un pueblo fantasma en mapas regionales.
+                    </p>
+
+                    <h3 id="historia-reconstruccion">Reconstrucción y el Appalachian Resurgence Trust (2038-Presente)
+                    </h3>
+                    <p>
+                        En 2038, el <i>Appalachian Resurgence Trust</i> (ART), una entidad privada de perfil opaco,
+                        adquirió los derechos de propiedad y concesiones mineras del valle.
+                    </p>
+
+                    <p>
+                        Oficialmente, ART declaró que la adquisición tenía fines de “restauración ecológica y
+                        preservación histórica”. Bajo esta justificación, el valle fue discretamente reconstruido...
+                    </p>
+
+                    <div class="art-note critical">
+                        <p>Aunque la mayoría de la población permanece de manera voluntaria, la gestión de residentes y
+                            el acceso a recursos están sujetos a protocolos internos no divulgados públicamente.
+                            Información detallada sobre los beneficiarios del programa y las motivaciones del Trust se
+                            mantiene restringida.</p>
+                    </div>
+                </section>
+
+                <section id="geografia" class="article-section">
+                    <h2>Geografía</h2>
+                    <p>
+                        Blackwood Hollow se ubica en una profunda incisión de la meseta de los <b>Apalaches</b>, dentro
+                        de la cuenca
+                        alta del <b>río Tug Fork</b>. El asentamiento está rodeado por pendientes con inclinaciones
+                        superiores a 45°,
+                        generando un microclima particular y ofreciendo una defensa natural frente a observación
+                        externa. El valle
+                        adopta la forma de un <i>Hollow</i> (valle ciego), con montañas convergentes que dejan un único
+                        acceso
+                        terrestre significativo: la <b>Carretera del Condado 404</b>.
+                    </p>
+
+                    <h3 id="geografia-fisica">Relieve y accidentes geográficos</h3>
+                    <ul>
+                        <li>
+                            <b>The Needle (La Aguja):</b> Pináculo de arenisca de aproximadamente 60 metros en la cresta
+                            este del valle.
+                            Se trata de un remanente de erosión diferencial y sirve como punto de referencia visual
+                            tanto para navegación
+                            terrestre como aérea.
+                        </li>
+                        <li>
+                            <b>Cavernas de Blackwood:</b> Sistema de cuevas calizas conectado con los niveles superiores
+                            de la antigua
+                            mina de carbón. Presenta concentraciones elevadas de <b>magnetita</b> y otros minerales
+                            ferrosos que provocan
+                            anomalías geomagnéticas locales, afectando comunicaciones por radio y escaneo satelital de
+                            alta precisión.
+                            Estudios internos sugieren que algunas cámaras subterráneas mantienen microclimas estables
+                            que podrían servir
+                            para almacenamiento o experimentación controlada.
+                        </li>
+                        <li>
+                            <b>Antiguas Minas:</b> Además de las cavernas, se identifican vestigios de galerías y pozos
+                            secundarios en la
+                            ladera norte y oeste del valle. Estas estructuras han sido parcialmente consolidadas por el
+                            ART para prevenir
+                            colapsos, pero mantienen interés operativo como refugios, rutas de evacuación o puntos de
+                            observación discretos.
+                        </li>
+                    </ul>
+
+                    <h3 id="geografia-clima">Clima</h3>
+                    <p>
+                        El clima corresponde a un tipo continental húmedo (<i>Dfa</i>), fuertemente condicionado por la
+                        topografía del
+                        valle. El fenómeno más recurrente es la <b>"Niebla de Blackwood Hollow"</b>, una inversión
+                        térmica persistente
+                        que mantiene el fondo del valle bajo nubes bajas durante aproximadamente el 60% del año,
+                        afectando visibilidad
+                        y percepción externa.
+                    </p>
+
+                    <table class="wikitable">
+                        <thead>
+                            <tr style="background-color: #eaecf0;">
+                                <th style="padding: 0.5em; border: 1px solid #a2a9b1;">Parámetro</th>
+                                <th style="padding: 0.5em; border: 1px solid #a2a9b1;">Valor Anual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Temperatura
+                                        Media</b></td>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1;">12.2 °C</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;">
+                                    <b>Precipitación Anual</b>
+                                </td>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1;">1,150 mm</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Días de
+                                        Lluvia/Nieve</b></td>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1;">145 días</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Días de
+                                        Niebla</b></td>
+                                <td style="padding: 0.4em; border: 1px solid #a2a9b1;">210 días</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 id="geografia-flora">Flora y fauna</h3>
+                    <p>
+                        La región está cubierta por bosques caducifolios mixtos de roble y nogal negro (<i>Juglans
+                            nigra</i>). Cerca de
+                        las bocas de las minas se ha documentado flora inusual, incluyendo hongos bioluminiscentes
+                        adaptados al sustrato
+                        mineral de los túneles antiguos. Estas especies presentan sensibilidad elevada a cambios en la
+                        composición
+                        química del aire, funcionando como indicadores biológicos del ecosistema y posibles alertas
+                        tempranas de
+                        alteraciones externas.
+                    </p>
+
+                    <h3 id="geografia-comunicaciones">Comunicaciones y acceso</h3>
+                    <p>
+                        El acceso terrestre se limita principalmente a la <b>Carretera del Condado 404</b>, sujeta a
+                        cierres por
+                        desprendimientos y condiciones inestables del terreno. La señal de telefonía móvil es
+                        prácticamente inexistente
+                        en el fondo del valle debido al efecto de jaula generado por las montañas y la composición
+                        mineral del suelo.
+                        Como consecuencia, la población utiliza redes locales por cable para comunicaciones internas y
+                        sistemas de
+                        emergencia controlados.
+                    </p>
+
+                    <div class="art-note critical">
+                        La topografía y las anomalías geomagnéticas del valle son consideradas ventajas estratégicas.
+                        Se mantiene registro de accesos, condiciones de seguridad y presencia de individuos no
+                        autorizados mediante
+                        sensores discretos y protocolos de monitoreo internos. La información detallada sobre rutas
+                        subterráneas y
+                        puntos de observación permanece clasificada.
+                    </div>
+                </section>
+
+                <section id="demografia" class="article-section">
+                    <h2>Demografía</h2>
+                    <p>
+                        Debido a su estatus de comunidad privada bajo la gestión del <i>Appalachian Resurgence Trust</i>
+                        (ART),
+                        las cifras oficiales del censo de 2050 son estimativas. Se calcula una población estable de
+                        <b>180
+                            residentes</b>, aunque la infraestructura actual permite albergar hasta 600 personas en
+                        condiciones de
+                        confinamiento.
+                    </p>
+
+                    <h3 id="demografia-estructura">Estructura Poblacional</h3>
+                    <p>
+                        La distribución demográfica de Blackwood Hollow refleja la planificación operativa de ART para
+                        el
+                        sostenimiento del enclave:
+                    </p>
+                    <ul>
+                        <li><b>Sector Juvenil (30%):</b> Aproximadamente 54 residentes menores de 21 años. La mayoría
+                            reside de forma permanente en el internado del instituto.</li>
+                        <li><b>Sector Operativo (60%):</b> Adultos de 22 a 60 años. Divididos entre <i>Custodios</i>
+                            (fachada y seguridad) y <i>Mentores</i> (instructores técnicos).</li>
+                        <li><b>Sector Veterano (10%):</b> Ancianos de familias fundadoras, actúan como custodios de la
+                            memoria histórica.</li>
+                    </ul>
+                    <div class="demographic-chart">
+                        <div class="chart-bar">
+                            <div class="segment youth" style="width: 30%;" title="Juvenil: 30%"></div>
+                            <div class="segment operative" style="width: 60%;" title="Operativo: 60%"></div>
+                            <div class="segment veteran" style="width: 10%;" title="Veterano: 10%"></div>
+                        </div>
+                        <div class="chart-legend">
+                            <span><i class="dot youth"></i> Juvenil (30%)</span>
+                            <span><i class="dot operative"></i> Operativo (60%)</span>
+                            <span><i class="dot veteran"></i> Veterano (10%)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="infraestructura" class="article-section">
+                    <h2>Infraestructura y Puntos de Interés</h2>
+
+                    <h3 id="infraestructura-administracion">Administración y Control</h3>
+
+                    <h4>Ayuntamiento y Centro de Mando (The Command Post)</h4>
+                    <p>
+                        Situado en el antiguo edificio de administración de la <i>Blackwood Coal & Coke Co.</i>. Tras la
+                        fachada de piedra caliza se encuentra el núcleo operativo de ART, protegido por una <b>Jaula de
+                            Faraday</b> integral. Gestiona la seguridad perimetral y las identidades digitales de la
+                        comunidad.
+                    </p>
+
+                    <h4>Biblioteca Municipal y Museo Minero</h4>
+                    <p>
+                        Contiene los archivos históricos del valle. Sus sótanos han sido reforzados y conectan
+                        discretamente con la red de túneles nivel 1 para almacenamiento estratégico de suministros
+                        críticos.
+                    </p>
+
+                    <h3 id="infraestructura-educacion">Educación y Formación</h3>
+
+                    <h4>Colegio, Instituto e Internado</h4>
+                    <p>
+                        Complejo de ladrillo reconstruido en 2038. Además de la educación reglada, los residentes
+                        jóvenes reciben instrucción en sistemas avanzados, autodefensa y protocolos de discreción
+                        operativa.
+                    </p>
+
+                    <h3 id="infraestructura-comercio">Comercio Local y Suministros</h3>
+
+                    <h4>Minimarket Central</h4>
+                    <p>Distribución de alimentos y suministros básicos. El sistema de pago es interno y no requiere
+                        moneda física, facilitando el racionamiento en caso de cierre del valle.</p>
+
+                    <h4>Panadería "Old Hearth"</h4>
+                    <p>Establecimiento de 1895. Funciona como punto de reunión informal para los residentes veteranos y
+                        nodo de observación táctica de la entrada principal del pueblo.</p>
+
+                    <h4>Tienda de Conveniencia y Clínica</h4>
+                    <p>Provee artículos de higiene. La planta superior alberga una clínica médica de alta tecnología
+                        capaz de realizar intervenciones de emergencia fuera del registro estatal.</p>
+
+                    <h3 id="infraestructura-ocio">Ocio y Vida Social</h3>
+
+                    <h4>Bar "The Deep Seam"</h4>
+                    <p>Ubicado en un antiguo almacén. Es el principal punto de descompresión social. Cuenta con un
+                        sistema de insonorización avanzado para permitir reuniones privadas sin riesgo de escucha
+                        externa.</p>
+
+                    <h4>Teatro "Blackwood Cinema"</h4>
+                    <p>Antiguo teatro de vodevil restaurado. Además de proyecciones culturales, se utiliza para sesiones
+                        de "briefing" comunitario y programas de formación audiovisual especializada.</p>
+
+                    <h4>Campo de Deportes y Polígono</h4>
+                    <p>Zona exterior que incluye pistas deportivas y un área de entrenamiento físico. Bajo la apariencia
+                        de actividades recreativas, se realizan ejercicios de respuesta a incidentes y coordinación de
+                        grupos.</p>
+
+                    <h3 id="infraestructura-seguridad">Seguridad y Sostenibilidad</h3>
+
+                    <h4>Invernadero "Silo 1"</h4>
+                    <p>Complejo hidropónico que garantiza la autonomía alimentaria. Utiliza energía geotérmica y cuenta
+                        con sistemas de filtración de agua independientes.</p>
+
+                    <h4>Rutas Subterráneas y Observatorios</h4>
+                    <p>Galerías mineras consolidadas que sirven como rutas de evacuación rápida y puntos de vigilancia
+                        encubierta sobre el bosque circundante.</p>
+
+                    <div class="art-note critical">
+                        <p>El acceso a los niveles inferiores del Command Post y a las rutas de evacuación nivel 3 está
+                            estrictamente limitado a personal con acreditación de Custodio.</p>
+                    </div>
+                </section>
+                <section id="seguridad" class="article-section">
+                    <h2>Seguridad y Protección Territoriales</h2>
+
+                    <p>
+                        El sistema de protección de <b>Blackwood Hollow</b> no se articula en torno a modelos de
+                        vigilancia reactiva ni a
+                        la aplicación de marcos legales convencionales. Desde su reorganización administrativa en 2038,
+                        el enclave opera
+                        bajo un esquema de <i>seguridad integral autónoma</i>, donde la defensa física y la estabilidad
+                        comunitaria constituyen un único continuo operativo gestionado por el ART.
+                    </p>
+
+                    <h3 id="seguridad-arquitectura">Arquitectura de Ocultación Activa</h3>
+                    <p>
+                        La continuidad del asentamiento depende de su capacidad para mantenerse como un <i>espacio
+                            estadísticamente irrelevante</i>. Para ello, se emplean contramedidas tecnológicas y
+                        ambientales:
+                    </p>
+
+                    <ul>
+                        <li><b>Nexo de Baja Intensidad:</b> Nodo geológico bajo el Ayuntamiento que actúa como regulador
+                            de coincidencia, amortiguando desviaciones en patrones locales para no generar umbrales de
+                            alerta en sistemas de monitorización externa (estatales o federales).</li>
+                        <li><b>Red de Vigilancia “Mycelium”:</b> Sistema de detección pasiva compuesto por sensores
+                            acústicos y térmicos integrados en el entorno forestal. La red utiliza una colonia fúngica
+                            modificada que reacciona ante alteraciones energéticas no convencionales.</li>
+                        <li><b>Velo de Datos y GPS:</b> Protocolos de interferencia que generan errores de aproximación
+                            en sistemas de posicionamiento global y servicios de cartografía digital, haciendo que el
+                            valle aparezca como una zona de "bosque denso sin interés estructural".</li>
+                        <li><b>Niebla de Dispersión Cognitiva:</b> Fenómeno atmosférico inducido que correlaciona con
+                            episodios de desorientación y lagunas amnésicas leves en individuos no autorizados que
+                            cruzan el perímetro sin los transpondedores adecuados.</li>
+                    </ul>
+
+
+
+                    <h3 id="seguridad-orden">Orden Público y Custodia</h3>
+                    <p>
+                        El mantenimiento del orden interno no recae en fuerzas policiales convencionales, sino en una
+                        estructura de seguridad privada bajo mando directo del Trust.
+                    </p>
+
+                    <ul>
+                        <li><b>Cuerpo de Custodios:</b> Fuerza permanente integrada por residentes con historial
+                            operativo. Actúan sin distintivos visibles y ejercen autoridad plena. Su función principal
+                            es la "corrección de desviaciones conductuales" antes de que supongan un riesgo para el
+                            colectivo.</li>
+                        <li><b>Derecho de Defensa Delegada:</b> El porte de armas y contramedidas está normalizado y
+                            amparado por acuerdos de delegación de competencias con el Condado de McDowell, que mantiene
+                            una presencia nominal pero carece de jurisdicción operativa real.</li>
+                        <li><b>Protocolos de Silencio (Incidente Crítico):</b> Cualquier alteración grave (intrusiones
+                            de grado 4 o accidentes no ordinarios) se gestiona internamente. Las comunicaciones externas
+                            se sustituyen por informes estadísticamente neutros.</li>
+                    </ul>
+
+                    <h3 id="seguridad-transito">Control de Tránsito e Higiene Digital</h3>
+
+                    <h4>Acceso Terrestre</h4>
+                    <p>El valle es accesible por una única vía secundaria sin señalización oficial. El control de acceso
+                        es constante pero discreto, utilizando camuflaje estructural para los puntos de control.</p>
+
+                    <h4>Protocolos de Salida</h4>
+                    <p>Los residentes que abandonan el valle deben someterse a una "limpieza de trazas": eliminación de
+                        metadatos, purga de geolocalización persistente y uso de identidades puente proporcionadas por
+                        el departamento de sistemas del Trust.</p>
+
+                    <div class="art-note critical">
+                        <p>
+                            <b>ESTADO ACTUAL: </b>
+                            <a href="protocolos-seguridad.html"
+                                style="color: #28a745; font-weight: bold; text-decoration: underline; text-shadow: 0 0 5px rgba(40, 167, 69, 0.2);">
+                                NIVEL VERDE
+                            </a>.
+                            La integridad del velo se mantiene en el 99.8%. Cualquier avistamiento de drones no
+                            identificados o personal de agencias federales debe reportarse inmediatamente al Command
+                            Post vía canal encriptado. Recuerda revisar información sobre el protocolo y los niveles en
+                            la sección correspondiente.
+                        </p>
+                    </div>
+                </section>
+                <section id="protocolo-egreso" class="article-section">
+                    <h2>Protocolo de Egreso Autónomo (PEA-3): “Vuelo del Cuervo”</h2>
+
+                    <p>
+                        Para los jóvenes bajo tutela directa del <i>Appalachian Resurgence Trust</i>, la mayoría de edad
+                        se define por
+                        <b>competencia funcional</b> más que por criterio cronológico. El proceso de salida, conocido
+                        operativamente como
+                        <b>Vuelo del Cuervo</b>, constituye un requisito obligatorio para la obtención de autorización
+                        de tránsito
+                        autónomo fuera del valle.
+                    </p>
+
+                    <p>
+                        La evaluación podrá realizarse de forma individual o colectiva. En los casos de evaluación
+                        colectiva, se concederá un permiso de salida condicionado al conjunto, quedando restringida la
+                        movilidad individual mientras dicho permiso se mantenga activo. Los métodos de superación son
+                        flexibles: desde la defensa física hasta técnicas de evasión, sigilo o aplicación de habilidades
+                        especiales.
+                    </p>
+
+                    <div class="art-note">
+                        <p>Los permisos colectivos tendrán prioridad y podrán ser solicitados por cualquier residente
+                            mayor de 14 años. Los permisos individuales no se recomiendan a menores de 21 años y
+                            requieren supervisión reforzada.</p>
+                    </div>
+
+                    <h3 id="protocolo-egreso-fases">Fases del Examen de Aptitud</h3>
+
+                    <table class="wikitable">
+                        <thead>
+                            <tr>
+                                <th>Fase</th>
+                                <th>Descripción Operativa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Infiltración Controlada</b></td>
+                                <td>Salida del valle y desplazamiento hasta Welch sin activar sistemas de detección
+                                    perimetral ni generar incidencias registrables. Los participantes pueden aplicar
+                                    cualquier estrategia
+                                    que garantice el éxito según sus habilidades.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Identidad Funcional</b></td>
+                                <td>Uso efectivo de una identidad legal reconstruida en trámites administrativos reales
+                                    bajo
+                                    supervisión indirecta. Se permite que los métodos de interacción se adapten a las
+                                    competencias
+                                    individuales y colectivas.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Gestión de Amenaza</b></td>
+                                <td> Simulación de evasión o confrontación frente a un operativo de rastreo, priorizando
+                                    la
+                                    autoprotección sin comprometer la discreción de Blackwood Hollow. Se aceptan
+                                    soluciones creativas
+                                    y adaptadas a los recursos y habilidades disponibles.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top: 1em;">
+                        Los aspirantes que no superan el protocolo permanecen en el enclave durante un periodo adicional
+                        de formación.
+                        El aspirante podrá volver a realizar la prueba de forma individual o colectiva pasados seis
+                        meses.
+                        Para los residentes sin núcleo familiar externo, el Vuelo del Cuervo representa la finalización
+                        formal de la
+                        tutela y la asignación de credenciales funcionales para la integración autónoma en el exterior.
+                    </p>
+                    <div class="art-note">
+                        <p>Los aspirantes pueden obtener más información sobre el desarrollo de las pruebas o sus
+                            simulaciones en
+                            la sección correspondiente o por medio de sus mentores designados.</p>
+                    </div>
+                </section>
+                <section id="referencias" class="article-section">
+                    <h2>Referencias y Documentación Relacionada</h2>
+
+                    <h3 id="referencias-archivos">Archivos Corporativos y Legales</h3>
+                    <ul>
+                        <li><b>ART-ADM-2038:</b> <i>Estatutos de Reurbanización del Valle de Blackwood.</i> Documento
+                            fundacional del Trust sobre propiedad de tierras.</li>
+                        <li><b>PEA-Reglamento-3.1:</b> <i>Manual de Evaluación de Competencias para el Egreso (Vuelo del
+                                Cuervo).</i> [Acceso restringido a Mentores].</li>
+                        <li><b>Protocolo de Silencio Informativo:</b> Directiva ejecutiva sobre la gestión de trazas
+                            digitales externas.</li>
+                    </ul>
+
+                    <h3 id="referencias-educacion">Educación y Comunidad Juvenil</h3>
+                    <ul>
+                        <li><a href="comunidad-estudiantes.html" style="font-weight: bold;">Portal Estudiantil "The
+                                Nest":</a> (Intranet Local) Foro de debate, organización de eventos deportivos y tablón
+                            de anuncios para residentes del internado.</li>
+                        <li><i>Currículo de Supervivencia Aplicada:</i> Guía docente sobre técnicas de campo en entornos
+                            boscosos de Virginia Occidental.</li>
+                    </ul>
+
+                    <h3 id="referencias-externas">Fuentes Externas e Investigación (Acceso Abierto)</h3>
+                    <ul>
+                        <li><b>Historia Minera:</b> <a href="https://es.wikipedia.org/wiki/Miner%C3%ADa_del_carb%C3%B3n"
+                                target="_blank">Evolución de la minería de carbón en los Apalaches</a> — Wikipedia.</li>
+                        <li><b>Geografía Local:</b> <a
+                                href="https://es.wikipedia.org/wiki/Condado_de_McDowell_(Virginia_Occidental)"
+                                target="_blank">Ficha del Condado de McDowell</a> — Datos geográficos reales.</li>
+                        <li><b>Condiciones Atmosféricas:</b> <a
+                                href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                                target="_blank">Previsión Meteorológica Welch (ZIP 24801)</a> — Control de dispersión de
+                            niebla.</li>
+                        <li><b>Cartografía Antigua:</b> <i>Mapas Geológicos del Servicio de Prospección de EE.UU.
+                                (Edición 1920).</i></li>
+                    </ul>
+
+                    <h3 id="referencias-vease-tambien">Véase también</h3>
+                    <ul>
+                        <li><a href="protocolos-seguridad.html">Protocolos de Seguridad y Niveles de Alerta</a></li>
+                        <li><a href="#">Lista de Residentes con Acreditación Nivel 2</a></li>
+                        <li><a href="#">Historia del Appalachian Resurgence Trust</a></li>
+                    </ul>
+                    <div class="art-note">
+                        <p>Para acceso a documentos clasificados o información adicional, contactar con el departamento
+                            de administración del ART o con el mentor asignado.</p>
+                    </div>
+                </section>
+            </article>
+        </main>
     </div>
-</section>
 
-    <section id="geografia" class="article-section">
-        <h2>Geografía</h2>
-        <p>
-    Blackwood Hollow se ubica en una profunda incisión de la meseta de los <b>Apalaches</b>, dentro de la cuenca 
-    alta del <b>río Tug Fork</b>. El asentamiento está rodeado por pendientes con inclinaciones superiores a 45°, 
-    generando un microclima particular y ofreciendo una defensa natural frente a observación externa. El valle 
-    adopta la forma de un <i>Hollow</i> (valle ciego), con montañas convergentes que dejan un único acceso 
-    terrestre significativo: la <b>Carretera del Condado 404</b>.
-</p>
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
 
-<h3>Relieve y accidentes geográficos</h3>
-<ul>
-    <li>
-        <b>The Needle (La Aguja):</b> Pináculo de arenisca de aproximadamente 60 metros en la cresta este del valle. 
-        Se trata de un remanente de erosión diferencial y sirve como punto de referencia visual tanto para navegación 
-        terrestre como aérea.
-    </li>
-    <li>
-        <b>Cavernas de Blackwood:</b> Sistema de cuevas calizas conectado con los niveles superiores de la antigua 
-        mina de carbón. Presenta concentraciones elevadas de <b>magnetita</b> y otros minerales ferrosos que provocan 
-        anomalías geomagnéticas locales, afectando comunicaciones por radio y escaneo satelital de alta precisión. 
-        Estudios internos sugieren que algunas cámaras subterráneas mantienen microclimas estables que podrían servir 
-        para almacenamiento o experimentación controlada.
-    </li>
-    <li>
-        <b>Antiguas Minas:</b> Además de las cavernas, se identifican vestigios de galerías y pozos secundarios en la 
-        ladera norte y oeste del valle. Estas estructuras han sido parcialmente consolidadas por el ART para prevenir 
-        colapsos, pero mantienen interés operativo como refugios, rutas de evacuación o puntos de observación discretos.
-    </li>
-</ul>
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
 
-<h3>Clima</h3>
-<p>
-    El clima corresponde a un tipo continental húmedo (<i>Dfa</i>), fuertemente condicionado por la topografía del 
-    valle. El fenómeno más recurrente es la <b>"Niebla de Blackwood Hollow"</b>, una inversión térmica persistente 
-    que mantiene el fondo del valle bajo nubes bajas durante aproximadamente el 60% del año, afectando visibilidad 
-    y percepción externa.
-</p>
-
-<table class="wikitable">
-    <thead>
-        <tr style="background-color: #eaecf0;">
-            <th style="padding: 0.5em; border: 1px solid #a2a9b1;">Parámetro</th>
-            <th style="padding: 0.5em; border: 1px solid #a2a9b1;">Valor Anual</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Temperatura Media</b></td>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1;">12.2 °C</td>
-        </tr>
-        <tr>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Precipitación Anual</b></td>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1;">1,150 mm</td>
-        </tr>
-        <tr>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Días de Lluvia/Nieve</b></td>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1;">145 días</td>
-        </tr>
-        <tr>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1; text-align: left;"><b>Días de Niebla</b></td>
-            <td style="padding: 0.4em; border: 1px solid #a2a9b1;">210 días</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>Flora y fauna</h3>
-<p>
-    La región está cubierta por bosques caducifolios mixtos de roble y nogal negro (<i>Juglans nigra</i>). Cerca de 
-    las bocas de las minas se ha documentado flora inusual, incluyendo hongos bioluminiscentes adaptados al sustrato 
-    mineral de los túneles antiguos. Estas especies presentan sensibilidad elevada a cambios en la composición 
-    química del aire, funcionando como indicadores biológicos del ecosistema y posibles alertas tempranas de 
-    alteraciones externas.
-</p>
-
-<h3>Comunicaciones y acceso</h3>
-<p>
-    El acceso terrestre se limita principalmente a la <b>Carretera del Condado 404</b>, sujeta a cierres por 
-    desprendimientos y condiciones inestables del terreno. La señal de telefonía móvil es prácticamente inexistente 
-    en el fondo del valle debido al efecto de jaula generado por las montañas y la composición mineral del suelo. 
-    Como consecuencia, la población utiliza redes locales por cable para comunicaciones internas y sistemas de 
-    emergencia controlados.
-</p>
-
-<div class="art-note critical">
-    La topografía y las anomalías geomagnéticas del valle son consideradas ventajas estratégicas. 
-    Se mantiene registro de accesos, condiciones de seguridad y presencia de individuos no autorizados mediante 
-    sensores discretos y protocolos de monitoreo internos. La información detallada sobre rutas subterráneas y 
-    puntos de observación permanece clasificada.
-</div>
-    </section>
-
-    <section id="demografia" class="article-section">
-        <h2>Demografía</h2>
-        <p>
-            Debido a su estatus de comunidad privada bajo la gestión del <i>Appalachian Resurgence Trust</i> (ART), 
-            las cifras oficiales del censo de 2050 son estimativas. Se calcula una población estable de <b>180 
-            residentes</b>, aunque la infraestructura actual permite albergar hasta 600 personas en condiciones de 
-            confinamiento.
-        </p>
-
-        <h3>Estructura Poblacional</h3>
-        <p>
-            La distribución demográfica de Blackwood Hollow refleja la planificación operativa de ART para el 
-            sostenimiento del enclave:
-        </p>
-        <ul>
-            <li><b>Sector Juvenil (30%):</b> Aproximadamente 54 residentes menores de 21 años. La mayoría reside de forma permanente en el internado del instituto.</li>
-            <li><b>Sector Operativo (60%):</b> Adultos de 22 a 60 años. Divididos entre <i>Custodios</i> (fachada y seguridad) y <i>Mentores</i> (instructores técnicos).</li>
-            <li><b>Sector Veterano (10%):</b> Ancianos de familias fundadoras, actúan como custodios de la memoria histórica.</li>
-        </ul>
-        <div class="demographic-chart">
-    <div class="chart-bar">
-        <div class="segment youth" style="width: 30%;" title="Juvenil: 30%"></div>
-        <div class="segment operative" style="width: 60%;" title="Operativo: 60%"></div>
-        <div class="segment veteran" style="width: 10%;" title="Veterano: 10%"></div>
-    </div>
-    <div class="chart-legend">
-        <span><i class="dot youth"></i> Juvenil (30%)</span>
-        <span><i class="dot operative"></i> Operativo (60%)</span>
-        <span><i class="dot veteran"></i> Veterano (10%)</span>
-    </div>
-</div>
-    </section>
-    
-    <section id="infraestructura" class="article-section">
-    <h2>Infraestructura y Puntos de Interés</h2>
-
-    <h3>Administración y Control</h3>
-    
-    <h4>Ayuntamiento y Centro de Mando (The Command Post)</h4>
-    <p>
-        Situado en el antiguo edificio de administración de la <i>Blackwood Coal & Coke Co.</i>. Tras la fachada de piedra caliza se encuentra el núcleo operativo de ART, protegido por una <b>Jaula de Faraday</b> integral. Gestiona la seguridad perimetral y las identidades digitales de la comunidad.
-    </p>
-
-    <h4>Biblioteca Municipal y Museo Minero</h4>
-    <p>
-        Contiene los archivos históricos del valle. Sus sótanos han sido reforzados y conectan discretamente con la red de túneles nivel 1 para almacenamiento estratégico de suministros críticos.
-    </p>
-
-    <h3>Educación y Formación</h3>
-
-    <h4>Colegio, Instituto e Internado</h4>
-    <p>
-        Complejo de ladrillo reconstruido en 2038. Además de la educación reglada, los residentes jóvenes reciben instrucción en sistemas avanzados, autodefensa y protocolos de discreción operativa.
-    </p>
-
-    <h3>Comercio Local y Suministros</h3>
-
-    <h4>Minimarket Central</h4>
-    <p>Distribución de alimentos y suministros básicos. El sistema de pago es interno y no requiere moneda física, facilitando el racionamiento en caso de cierre del valle.</p>
-
-    <h4>Panadería "Old Hearth"</h4>
-    <p>Establecimiento de 1895. Funciona como punto de reunión informal para los residentes veteranos y nodo de observación táctica de la entrada principal del pueblo.</p>
-
-    <h4>Tienda de Conveniencia y Clínica</h4>
-    <p>Provee artículos de higiene. La planta superior alberga una clínica médica de alta tecnología capaz de realizar intervenciones de emergencia fuera del registro estatal.</p>
-
-    <h3>Ocio y Vida Social</h3>
-
-    <h4>Bar "The Deep Seam"</h4>
-    <p>Ubicado en un antiguo almacén. Es el principal punto de descompresión social. Cuenta con un sistema de insonorización avanzado para permitir reuniones privadas sin riesgo de escucha externa.</p>
-
-    <h4>Teatro "Blackwood Cinema"</h4>
-    <p>Antiguo teatro de vodevil restaurado. Además de proyecciones culturales, se utiliza para sesiones de "briefing" comunitario y programas de formación audiovisual especializada.</p>
-
-    <h4>Campo de Deportes y Polígono</h4>
-    <p>Zona exterior que incluye pistas deportivas y un área de entrenamiento físico. Bajo la apariencia de actividades recreativas, se realizan ejercicios de respuesta a incidentes y coordinación de grupos.</p>
-
-    <h3>Seguridad y Sostenibilidad</h3>
-
-    <h4>Invernadero "Silo 1"</h4>
-    <p>Complejo hidropónico que garantiza la autonomía alimentaria. Utiliza energía geotérmica y cuenta con sistemas de filtración de agua independientes.</p>
-
-    <h4>Rutas Subterráneas y Observatorios</h4>
-    <p>Galerías mineras consolidadas que sirven como rutas de evacuación rápida y puntos de vigilancia encubierta sobre el bosque circundante.</p>
-
-    <div class="art-note critical">
-        <p>El acceso a los niveles inferiores del Command Post y a las rutas de evacuación nivel 3 está estrictamente limitado a personal con acreditación de Custodio.</p>
-    </div>
-</section>
-<section id="seguridad" class="article-section">
-    <h2>Seguridad y Protección Territoriales</h2>
-    
-    <p>
-        El sistema de protección de <b>Blackwood Hollow</b> no se articula en torno a modelos de vigilancia reactiva ni a 
-        la aplicación de marcos legales convencionales. Desde su reorganización administrativa en 2038, el enclave opera 
-        bajo un esquema de <i>seguridad integral autónoma</i>, donde la defensa física y la estabilidad comunitaria constituyen un único continuo operativo gestionado por el ART.
-    </p>
-
-    <h3>Arquitectura de Ocultación Activa</h3>
-    <p>
-        La continuidad del asentamiento depende de su capacidad para mantenerse como un <i>espacio estadísticamente irrelevante</i>. Para ello, se emplean contramedidas tecnológicas y ambientales:
-    </p>
-
-    <ul>
-        <li><b>Nexo de Baja Intensidad:</b> Nodo geológico bajo el Ayuntamiento que actúa como regulador de coincidencia, amortiguando desviaciones en patrones locales para no generar umbrales de alerta en sistemas de monitorización externa (estatales o federales).</li>
-        <li><b>Red de Vigilancia “Mycelium”:</b> Sistema de detección pasiva compuesto por sensores acústicos y térmicos integrados en el entorno forestal. La red utiliza una colonia fúngica modificada que reacciona ante alteraciones energéticas no convencionales.</li>
-        <li><b>Velo de Datos y GPS:</b> Protocolos de interferencia que generan errores de aproximación en sistemas de posicionamiento global y servicios de cartografía digital, haciendo que el valle aparezca como una zona de "bosque denso sin interés estructural".</li>
-        <li><b>Niebla de Dispersión Cognitiva:</b> Fenómeno atmosférico inducido que correlaciona con episodios de desorientación y lagunas amnésicas leves en individuos no autorizados que cruzan el perímetro sin los transpondedores adecuados.</li>
-    </ul>
-
-    
-
-    <h3>Orden Público y Custodia</h3>
-    <p>
-        El mantenimiento del orden interno no recae en fuerzas policiales convencionales, sino en una estructura de seguridad privada bajo mando directo del Trust.
-    </p>
-
-    <ul>
-        <li><b>Cuerpo de Custodios:</b> Fuerza permanente integrada por residentes con historial operativo. Actúan sin distintivos visibles y ejercen autoridad plena. Su función principal es la "corrección de desviaciones conductuales" antes de que supongan un riesgo para el colectivo.</li>
-        <li><b>Derecho de Defensa Delegada:</b> El porte de armas y contramedidas está normalizado y amparado por acuerdos de delegación de competencias con el Condado de McDowell, que mantiene una presencia nominal pero carece de jurisdicción operativa real.</li>
-        <li><b>Protocolos de Silencio (Incidente Crítico):</b> Cualquier alteración grave (intrusiones de grado 4 o accidentes no ordinarios) se gestiona internamente. Las comunicaciones externas se sustituyen por informes estadísticamente neutros.</li>
-    </ul>
-
-    <h3>Control de Tránsito e Higiene Digital</h3>
-    
-    <h4>Acceso Terrestre</h4>
-    <p>El valle es accesible por una única vía secundaria sin señalización oficial. El control de acceso es constante pero discreto, utilizando camuflaje estructural para los puntos de control.</p>
-
-    <h4>Protocolos de Salida</h4>
-    <p>Los residentes que abandonan el valle deben someterse a una "limpieza de trazas": eliminación de metadatos, purga de geolocalización persistente y uso de identidades puente proporcionadas por el departamento de sistemas del Trust.</p>
-
-<div class="art-note critical">
-    <p>
-        <b>ESTADO ACTUAL: </b>
-        <a href="protocolos-seguridad.html" style="color: #28a745; font-weight: bold; text-decoration: underline; text-shadow: 0 0 5px rgba(40, 167, 69, 0.2);">
-            NIVEL VERDE
-        </a>. 
-        La integridad del velo se mantiene en el 99.8%. Cualquier avistamiento de drones no identificados o personal de agencias federales debe reportarse inmediatamente al Command Post vía canal encriptado. Recuerda revisar información sobre el protocolo y los niveles en la sección correspondiente.
-    </p>
-</div>
-</section>
-<section id="protocolo-egreso" class="article-section">
-    <h2>Protocolo de Egreso Autónomo (PEA-3): “Vuelo del Cuervo”</h2>
-
-    <p>
-        Para los jóvenes bajo tutela directa del <i>Appalachian Resurgence Trust</i>, la mayoría de edad se define por 
-        <b>competencia funcional</b> más que por criterio cronológico. El proceso de salida, conocido operativamente como 
-        <b>Vuelo del Cuervo</b>, constituye un requisito obligatorio para la obtención de autorización de tránsito 
-        autónomo fuera del valle.
-    </p>
-
-    <p>
-        La evaluación podrá realizarse de forma individual o colectiva. En los casos de evaluación colectiva, se concederá un permiso de salida condicionado al conjunto, quedando restringida la movilidad individual mientras dicho permiso se mantenga activo. Los métodos de superación son flexibles: desde la defensa física hasta técnicas de evasión, sigilo o aplicación de habilidades especiales.
-    </p>
-
-    <div class="art-note">
-        <p>Los permisos colectivos tendrán prioridad y podrán ser solicitados por cualquier residente mayor de 14 años. Los permisos individuales no se recomiendan a menores de 21 años y requieren supervisión reforzada.</p>
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
     </div>
 
-    <h3>Fases del Examen de Aptitud</h3>
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
 
-    <table class="wikitable">
-        <thead>
-            <tr>
-                <th>Fase</th>
-                <th>Descripción Operativa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>Infiltración Controlada</b></td>
-                <td>Salida del valle y desplazamiento hasta Welch sin activar sistemas de detección
-            perimetral ni generar incidencias registrables. Los participantes pueden aplicar cualquier estrategia
-            que garantice el éxito según sus habilidades.</td>
-            </tr>
-            <tr>
-                <td><b>Identidad Funcional</b></td>
-                <td>Uso efectivo de una identidad legal reconstruida en trámites administrativos reales bajo
-            supervisión indirecta. Se permite que los métodos de interacción se adapten a las competencias
-            individuales y colectivas.</td>
-            </tr>
-            <tr>
-                <td><b>Gestión de Amenaza</b></td>
-                <td> Simulación de evasión o confrontación frente a un operativo de rastreo, priorizando la
-                autoprotección sin comprometer la discreción de Blackwood Hollow. Se aceptan soluciones creativas
-                y adaptadas a los recursos y habilidades disponibles.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p style="margin-top: 1em;">
-        Los aspirantes que no superan el protocolo permanecen en el enclave durante un periodo adicional de formación. 
-        El aspirante podrá volver a realizar la prueba de forma individual o colectiva pasados seis meses.
-        Para los residentes sin núcleo familiar externo, el Vuelo del Cuervo representa la finalización formal de la 
-        tutela y la asignación de credenciales funcionales para la integración autónoma en el exterior.
-    </p>
-        <div class="art-note">
-        <p>Los aspirantes pueden obtener más información sobre el desarrollo de las pruebas o sus simulaciones en 
-            la sección correspondiente o por medio de sus mentores designados.</p>
-    </div>
-</section>
-<section id="referencias" class="article-section">
-    <h2>Referencias y Documentación Relacionada</h2>
-
-    <h3>Archivos Corporativos y Legales</h3>
-    <ul>
-        <li><b>ART-ADM-2038:</b> <i>Estatutos de Reurbanización del Valle de Blackwood.</i> Documento fundacional del Trust sobre propiedad de tierras.</li>
-        <li><b>PEA-Reglamento-3.1:</b> <i>Manual de Evaluación de Competencias para el Egreso (Vuelo del Cuervo).</i> [Acceso restringido a Mentores].</li>
-        <li><b>Protocolo de Silencio Informativo:</b> Directiva ejecutiva sobre la gestión de trazas digitales externas.</li>
-    </ul>
-
-    <h3>Educación y Comunidad Juvenil</h3>
-    <ul>
-        <li><a href="comunidad-estudiantes.html" style="font-weight: bold;">Portal Estudiantil "The Nest":</a> (Intranet Local) Foro de debate, organización de eventos deportivos y tablón de anuncios para residentes del internado.</li>
-        <li><i>Currículo de Supervivencia Aplicada:</i> Guía docente sobre técnicas de campo en entornos boscosos de Virginia Occidental.</li>
-    </ul>
-
-    <h3>Fuentes Externas e Investigación (Acceso Abierto)</h3>
-    <ul>
-        <li><b>Historia Minera:</b> <a href="https://es.wikipedia.org/wiki/Miner%C3%ADa_del_carb%C3%B3n" target="_blank">Evolución de la minería de carbón en los Apalaches</a> — Wikipedia.</li>
-        <li><b>Geografía Local:</b> <a href="https://es.wikipedia.org/wiki/Condado_de_McDowell_(Virginia_Occidental)" target="_blank">Ficha del Condado de McDowell</a> — Datos geográficos reales.</li>
-        <li><b>Condiciones Atmosféricas:</b> <a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444" target="_blank">Previsión Meteorológica Welch (ZIP 24801)</a> — Control de dispersión de niebla.</li>
-        <li><b>Cartografía Antigua:</b> <i>Mapas Geológicos del Servicio de Prospección de EE.UU. (Edición 1920).</i></li>
-    </ul>
-
-    <h3>Véase también</h3>
-    <ul>
-        <li><a href="protocolos-seguridad.html">Protocolos de Seguridad y Niveles de Alerta</a></li>
-        <li><a href="#">Lista de Residentes con Acreditación Nivel 2</a></li>
-        <li><a href="#">Historia del Appalachian Resurgence Trust</a></li>
-    </ul>
-    </p>
-</div>
-</section>
-</article>
-    </main>
-</div>
-
-<footer id="main-footer">
-    <div class="footer-tech-data">
-        <p>
-            SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> | 
-            Protocolo de cifrado: <b>AES-256-GCM</b> activo.
-        </p>
-        <p>
-            Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. | 
-            Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
-        </p>
-        <p>
-            Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> | 
-            Estado: <span class="status-monitor">MONITORIZADO</span>
-        </p>
-    </div>
-    
-    <div class="footer-copyright">
-        <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo de revocación inmediata.</p>
-    </div>
-</footer>
-
-<div id="modal-emergencia" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
-    <div style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
-        <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
-        <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
-        <p style="text-align: left; line-height: 1.6;">
-            La emergencia ha sido registrada correctamente. 
-            <br><br>
-            Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
-            <br><br>
-            <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo de Evasión E-12</i> y mantenga su terminal en modo pasivo.
-        </p>
-        <button onclick="cerrarEmergencia()" style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
-    </div>
-</div>
-
-<div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
-
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>
