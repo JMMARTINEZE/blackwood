@@ -1,0 +1,116 @@
+/* =========================
+   THE NEST – ESTILO SOCIAL
+   ========================= */
+
+.nest-theme {
+    margin-top: 2em;
+    padding: 2em;
+    background: #fdfcf8;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #202122;
+}
+
+/* Cabecera */
+.nest-header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.nest-header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #2a2a2a;
+}
+
+.nest-header p {
+    margin-top: 0.4em;
+    font-size: 0.95em;
+    color: #555;
+    font-style: italic;
+}
+
+/* Tarjetas */
+.nest-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.2em 1.4em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.nest-card h3 {
+    margin-top: 0;
+    font-size: 1.15em;
+    color: #2b2b2b;
+}
+
+/* Listas del Nest */
+.nest-card ul,
+.nest-card ol {
+    padding-left: 1.2em;
+}
+
+.nest-card li {
+    margin-bottom: 0.6em;
+}
+
+/* Bloque destacado (avisos, búsquedas, etc.) */
+.nest-highlight {
+    background: #eef5ff;
+    border-left: 4px solid #3366cc;
+    padding: 0.8em 1em;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+/* Enlaces sociales */
+.nest-card a {
+    font-weight: 500;
+}
+
+/* Playlist */
+.nest-playlist li {
+    font-style: italic;
+    color: #444;
+}
+.nest-playlist li::before {
+    content: "🎵 ";
+}
+
+.nest-closing-inline {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nest-closing-thumb {
+    width: 120px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.nest-closing-text {
+    font-style: italic;
+}
+
+.nest-image-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #00d4ff;
+    text-decoration: none;
+}
+
+.nest-image-link:hover {
+    text-decoration: underline;
+}
+.nest-note {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 1em;
+}
