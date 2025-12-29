@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Solicitud de Acceso ART</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/wiki_logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<div id="app-grid">
+    <aside id="sidebar">
+        <a id="logo-container" href="index.html">
+            <img src="img/wiki_logo.png" alt="ART Logo">
+        </a>
+        <nav class="portal">
+            <h3>Directorio Operativo</h3>
+            <ul>
+                <li><a href="index.html">Resumen del Enclave</a></li>
+                <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+            </ul>
+        </nav>
+        <nav class="portal">
+            <h3>Terminal</h3>
+            <ul>
+                <li><a href="solicitud-ingreso.html" class="active">Solicitud de Ingreso/Visita</a></li>
+                <li><a href="javascript:void(0)" onclick="dispararEmergencia()" style="color: #dc3545; font-weight: bold;">[ EMERGENCIA ]</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main-wrapper">
+        <header id="sticky-header">
+            <nav class="top-links">
+                <a href="#" class="active">Formulario ART-7</a>
+            </nav>
+            <div id="user-tools">
+                <div class="acred-badge">
+                    <span class="label">Acreditación</span>
+                    <span class="value">L-01 RESIDENTE</span>
+                </div>
+                <button class="appearance-toggle" title="Configuración de Interfaz">⚙️</button>
+            </div>
+        </header>
+
+        <article id="content">
+            <div id="pdf-area">
+                <h1 id="firstHeading">Formulario de Registro y Evaluación</h1>
+                <div id="siteSub">Documento Oficial ART-7 — <span class="restricted">Uso Administrativo</span></div>
+
+                <div class="protocolo-instrucciones">
+                    <h3>📋 PROTOCOLO DE CUMPLIMENTACIÓN (ART-PRO-07)</h3>
+                    <ol>
+                        <li>Seleccione la naturaleza de su estancia.</li>
+                        <li>Cumplimente los datos biográficos y motivos técnicos.</li>
+                        <li>Tras el envío digital, descargue el PDF para su entrega física.</li>
+                    </ol>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-group">
+                        <label>Tipo de Registro:</label>
+                        <select id="tipo-registro" onchange="actualizarCamposDinamicos()">
+                            <option value="">-- Seleccione --</option>
+                            <option value="ingreso">Solicitud de Residencia (Permanente)</option>
+                            <option value="visitante">Permiso de Visitante (Temporal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre y Apellidos:</label>
+                            <input type="text" id="f-nombre" placeholder="Ej: Miller, Joel">
+                        </div>
+                        <div class="form-group">
+                            <label>ID Ciudadano:</label>
+                            <input type="text" id="f-id" placeholder="XXXX-0000">
+                        </div>
+                    </div>
+
+                    <div id="campos-visitante" style="display: none;" class="dynamic-section">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Días de Estancia:</label>
+                                <input type="number" id="f-dias">
+                            </div>
+                            <div class="form-group">
+                                <label>Propósito:</label>
+                                <input type="text" id="f-proposito">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="campos-ingreso" style="display: none;" class="dynamic-section">
+                        <div class="form-group">
+                            <label>Habilidades Especiales:</label>
+                            <textarea id="f-skills" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="advertencia-legal" class="advertencia-box">
+                        <p id="texto-advertencia">Seleccione un tipo de registro para validar las cláusulas.</p>
+                    </div>
+                </div>
+            </div> <div style="text-align: center; margin-top: 30px;">
+                <button type="button" class="btn-wiki" id="btn-enviar" onclick="enviarFormularioSimulado()">
+                    PROCESAR Y GENERAR EXPEDIENTE PDF
+                </button>
+            </div>
+        </article>
+    </main>
+</div>
+
+<div id="modal-notificación" class="modal-art">
+    <div class="modal-content">
+        <h3>SOLICITUD PROCESADA</h3>
+        <p>Los datos han sido cifrados. Su documento PDF de entrega física se está generando.</p>
+        <p>Expediente: <span id="num-expediente" style="font-weight: bold; color: #28a745;"></span></p>
+        <button onclick="cerrarModal()">ACEPTAR</button>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+/* ./css/main.css - Estilo Wikipedia Moderno / Informe ART */
+
+/* ===== VARIABLES GLOBALES Y TEMAS ===== */
+:root {
+  --bg-body: #f8f9fa;
+  --bg-content: #ffffff;
+  --text-color: #202122;
+  --link-color: #3366cc;
+  --link-hover: #1a0dab;
+  --border-color: #a2a9b1;
+  --header-bg: #ffffff;
+  --sidebar-width: 14em;
+  --content-max-width: 960px;
+  --font-family-heading: 'Linux Libertine', 'Georgia', 'Times', serif;
+  --font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+  
+  /* Infobox Variables */
+  --infobox-bg: #f8f9fa;
+  --infobox-border: #a2a9b1;
+  --infobox-title-bg: #cddeff;
+}
+
+body.dark-mode {
+  --bg-body: #101418;
+  --bg-content: #1a1d21;
+  --text-color: #eaecf0;
+  --link-color: #8da7f0;
+  --link-hover: #c5d1ff;
+  --border-color: #4a4a4a;
+  --header-bg: #1a1d21;
+  --infobox-bg: #202429;
+  --infobox-border: #4a4a4a;
+  --infobox-title-bg: #2c3650;
+}
+
+/* ===== RESET Y BASE ===== */
+body {
+  margin: 0;
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--link-hover); text-decoration: underline; }
+a.new { color: #dd3333; }
+
+/* ===== LAYOUT ===== */
+#app-grid {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+#sidebar {
+  padding: 20px;
+  font-size: 0.875em;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+}
+
+#main-wrapper {
+  background-color: var(--bg-content);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+#sticky-header {
+  position: sticky;
+  top: 0;
+  height: 50px;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+.top-links a {
+  margin-right: 15px;
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.top-links a.active {
+  font-weight: bold;
+  border-bottom: 2px solid var(--link-color);
+  padding-bottom: 12px;
+}
+
+#search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 4px 10px;
+  width: 300px;
+}
+
+#search-input {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  outline: none;
+  width: 100%;
+  margin-left: 5px;
+}
+
+/* ===== CONTENIDO DEL ARTÍCULO ===== */
+#content {
+  padding: 2em 3em;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  transition: max-width 0.3s;
+}
+
+#content.full-width {
+  max-width: 95%;
+}
+
+.page-tools {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: 0.85em;
+  margin-bottom: 1em;
+}
+
+h1#firstHeading {
+  font-family: var(--font-family-heading);
+  font-size: 2.2em;
+  font-weight: 400;
+  margin-bottom: 0.1em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#siteSub {
+  font-size: 0.88em;
+  color: #72777d;
+  margin-bottom: 1.5em;
+}
+
+.restricted {
+  color: #dd3333;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 1.5em;
+  padding-bottom: 0.3em;
+}
+
+h3 {
+    font-family: var(--font-family-heading);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 1.2em;
+    color: var(--text-color);
+    border: none; /* Los h3 no suelen llevar línea en Wikipedia */
+}
+
+h4 {
+    font-size: 1.1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: var(--text-color);
+    font-weight: bold;
+    /* border-bottom: 1px dashed var(--border-color); /* Una línea sutil para separar locales */
+    display: inline-block;
+    width: 100%;
+}
+/* ===== INFOBOX (FICHA TÉCNICA) ===== */
+.infobox {
+  float: right;
+  width: 300px;
+  background-color: var(--infobox-bg);
+  border: 1px solid var(--infobox-border);
+  margin: 0 0 1em 1em;
+  padding: 5px;
+  font-size: 0.88em;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.infobox-title {
+  background-color: var(--infobox-title-bg);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #000; /* Siempre negro para legibilidad */
+}
+
+.infobox-image-container {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #fff; /* Fondo blanco para la imagen */
+  margin-bottom: 5px;
+}
+
+.infobox-image-container img {
+  max-width: 270px;
+  height: auto;
+  border: 1px solid #ddd;
+}
+
+.infobox-image-container img:hover {
+  filter: brightness(0.9);
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox th {
+  text-align: left;
+  padding: 4px 8px;
+  width: 40%;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.infobox td {
+  padding: 4px 8px;
+  color: var(--text-color);
+}
+
+/* ===== OTROS ELEMENTOS ===== */
+#toc {
+  background-color: var(--bg-body);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  display: inline-block;
+  margin: 1em 0;
+  min-width: 200px;
+}
+
+#toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 0 0;
+}
+
+#toc li {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+/* Menú de Apariencia Flotante */
+#appearance-menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: var(--bg-content);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  width: 250px;
+  z-index: 200;
+  border-radius: 4px;
+  display: none; /* Controlado por JS con clase .visible */
+}
+
+#appearance-menu.visible {
+  display: block;
+}
+
+.btn-wiki {
+  padding: 5px 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-body);
+  color: var(--text-color);
+  cursor: pointer;
+  margin: 2px;
+}
+
+.btn-wiki.active {
+  background: #eaf3ff;
+  border-color: #3366cc;
+  color: #3366cc;
+}
+
+/* Logo */
+#logo-container img {
+  max-width: 135px;
+  margin: 0 auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  #app-grid { grid-template-columns: 1fr; }
+  #sidebar { display: none; }
+  .infobox { float: none; width: 100%; margin: 1em 0; }
+  #content { padding: 1.5em; }
+}
+
+/* Bloque Informativo ART */
+.art-note {
+    background-color: var(--bg-body);
+    border-left: 5px solid var(--link-color); /* Borde destacado lateral */
+    border-radius: 4px;
+    margin: 2em 0;
+    padding: 1.2em 1.5em;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Etiqueta superior opcional */
+.art-note::before {
+    content: "NOTA INTERNA ART";
+    display: block;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: var(--link-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.art-note p {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.95em;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* Variante Crítica (Roja) por si la necesitas */
+.art-note.critical {
+    border-left-color: #dd3333;
+    background-color: rgba(221, 51, 51, 0.05);
+}
+.art-note.critical::before {
+    content: "PROTOCOLO INTERNO ART";
+    color: #dd3333;
+}
+
+/* Ajuste para modo oscuro */
+body.dark-mode .art-note {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Diagrama de Demografía */
+.demographic-chart {
+    margin: 20px 0;
+    max-width: 500px;
+}
+
+.chart-bar {
+    display: flex;
+    height: 25px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #eee;
+    border: 1px solid var(--border-color);
+}
+
+.segment {
+    height: 100%;
+    transition: width 0.5s ease; /* Efecto suave al cambiar valores */
+}
+
+/* Colores de los sectores */
+.youth { background-color: #3366cc; }     /* Azul ART */
+.operative { background-color: #55aaff; } /* Azul claro */
+.veteran { background-color: #1a2a44; }   /* Azul oscuro/Negro */
+
+.chart-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.85em;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Ajuste Modo Oscuro */
+body.dark-mode .chart-bar { background-color: #333; }
+body.dark-mode .veteran { background-color: #8da7f0; } /* Invertir para legibilidad */
+
+/* Estilo para tablas tipo Wiki */
+.wikitable {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+    font-size: 0.95em;
+}
+
+.wikitable th {
+    background-color: var(--infobox-title-bg);
+    color: #202122; /* Texto oscuro para contraste en cabecera */
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.wikitable td {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+    color: var(--text-color);
+}
+
+/* Zebra striping para lectura fácil */
+.wikitable tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+body.dark-mode .wikitable tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#referencias ul {
+    list-style-type: square;
+    padding-left: 1.5em;
+}
+
+#referencias li {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+/* Contenedor del Índice */
+#toc {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    display: inline-block;
+    margin: 1em 0;
+    font-size: 1em;
+    min-width: 250px;
+}
+
+#toc strong {
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Lista principal */
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#toc li {
+    margin: 4px 0;
+}
+
+/* Subsecciones (Alineadas a la derecha) */
+#toc ul ul {
+    margin-left: 20px; /* Aquí controlas el desplazamiento a la derecha */
+    margin-top: 2px;
+    border-left: 1px solid var(--border-color); /* Opcional: una línea guía sutil */
+    padding-left: 10px;
+}
+
+#toc a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+#toc a:hover {
+    text-decoration: underline;
+}
+#toc li a:hover {
+    background-color: rgba(51, 102, 204, 0.1); /* Un resalte azul muy suave */
+    padding-left: 5px;
+    transition: all 0.2s ease;
+}
+
+#sidebar .portal h3 {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #888;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+#watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.2;
+    transform: rotate(-15deg);
+    font-weight: bold;
+    border: 3px solid #dc3545;
+    color: #dc3545;
+    padding: 5px 10px;
+    pointer-events: none;
+    z-index: 1000;
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+#main-footer {
+    margin-top: 60px;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02); /* Un fondo sutilmente distinto */
+    font-family: 'Courier New', Courier, monospace; /* Fuente técnica */
+    font-size: 0.8em;
+    color: #666;
+    line-height: 1.6;
+}
+
+body.dark-mode #main-footer {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.footer-tech-data b, 
+.code-font {
+    color: var(--text-color);
+}
+
+.status-monitor {
+    color: #28a745;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 15px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
