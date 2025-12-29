@@ -610,3 +610,44 @@ body.dark-mode #main-footer {
     color: #dc3545;
     font-weight: bold;
 }
+
+/* Estilo Moderno tipo Wiki para TODAS las tablas */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1.5rem 0 !important;
+    font-family: sans-serif !important;
+    font-size: 0.9rem !important;
+    background-color: #ffffff !important; /* Fondo blanco siempre */
+    color: #202122 !important; /* Texto oscuro siempre */
+    border: 1px solid #a2a9b1 !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+table thead tr {
+    background-color: #f8f9fa !important; /* Gris muy claro de Wikipedia moderna */
+    border-bottom: 1px solid #a2a9b1 !important;
+}
+
+table th {
+    padding: 10px 15px !important;
+    border: 1px solid #a2a9b1 !important;
+    font-weight: bold !important;
+    text-align: left !important;
+}
+
+table td {
+    padding: 8px 15px !important;
+    border: 1px solid #a2a9b1 !important;
+    vertical-align: middle !important;
+}
+
+/* Fila de cebra sutil para modernidad */
+table tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2 !important;
+}
+
+/* Resalte al pasar el ratón */
+table tbody tr:hover {
+    background-color: #eaf3ff !important;
+}
