@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blackwood Hollow - Appalachian Resurgence Trust. Informe Interno Integrado (IV-4). Difusión limitada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="img/artlogo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="app-grid">
+
+        <aside id="sidebar">
+            <a id="logo-container" href="index.html">
+                <img src="img/artlogo.png" alt="ART Logo">
+            </a>
+
+            <nav class="portal">
+                <h3>Directorio Operativo</h3>
+                <ul>
+                    <li><a href="index.html">Resumen del Enclave</a></li>
+                    <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
+                    <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
+                    <li><a href="guia-residente.html">Guía del Residente</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Recursos de Campo</h3>
+                <ul>
+                    <li><a href="https://www.accuweather.com/es/us/welch/24801/weather-forecast/336444"
+                            target="_blank">Monitorización Climática</a></li>
+                    <li><a href="#">Cartografía de Túneles</a></li>
+                    <li><a href="#">Logística y Suministros</a></li>
+                </ul>
+            </nav>
+
+            <nav class="portal">
+                <h3>Terminal</h3>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)"
+                            onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no permite elevar privilegios.\nEl intento ha sido registrado.')"
+                            style="color: #888;">
+                            Solicitud de nivel 2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="solicitud-ingreso.html">
+                            Solicitud de Ingreso/Visita
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" onclick="dispararEmergencia()"
+                            style="color: #dc3545; font-weight: bold; border: 1px solid #dc3545; padding: 2px 5px; display: inline-block; margin-top: 10px; border-radius: 3px; text-transform: uppercase;">
+                            [ EMERGENCIA ]
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="main-wrapper">
+
+            <header id="sticky-header">
+                <nav class="top-links">
+                    <a href="#" class="active">Artículo</a>
+                    <a href="#" class="new">Discusión</a>
+                </nav>
+
+                <div id="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART">
+                </div>
+
+                <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
+
+                    <div
+                        style="display: flex; align-items: center; margin-right: 12px; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 2px; background: rgba(0,0,0,0.02); white-space: nowrap;">
+                        <span
+                            style="font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 8px; letter-spacing: 1px;">Acreditación</span>
+                        <span
+                            style="font-family: monospace; font-size: 0.85em; font-weight: bold; color: #28a745; text-shadow: 0 0 3px rgba(40,167,69,0.2);">L-01
+                            RESIDENTE</span>
+                    </div>
+
+                    <button class="appearance-toggle" onclick="toggleAppearanceMenu()" title="Configuración de Interfaz"
+                        style="border:none; background:transparent; cursor:pointer; font-size:1.1em; display: flex; align-items: center; color: var(--text-color); opacity: 0.8;">
+                        ⚙️
+                    </button>
+                </div>
+            </header>
+
+            <div id="appearance-menu">
+                <h4>Apariencia</h4>
+                <div class="control-group">
+                    <span class="control-label">Tamaño del texto</span>
+                    <button class="btn-wiki" onclick="setFont('small', this)">A Pequeño</button>
+                    <button class="btn-wiki active" id="btn-font-std" onclick="setFont('standard', this)">A
+                        Estándar</button>
+                    <button class="btn-wiki" onclick="setFont('large', this)">A Grande</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Ancho del contenido</span>
+                    <button class="btn-wiki active" id="btn-width-std"
+                        onclick="setWidth('standard', this)">Estándar</button>
+                    <button class="btn-wiki" id="btn-width-full" onclick="setWidth('full', this)">Completo</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Color</span>
+                    <button class="btn-wiki active" id="btn-mode-light" onclick="setMode('light', this)">☀️
+                        Claro</button>
+                    <button class="btn-wiki" id="btn-mode-dark" onclick="setMode('dark', this)">🌙 Oscuro</button>
+                </div>
+            </div>
+
+            <article id="content">
+                <h1 id="firstHeading">Guía del Residente: Protocolo de Vida y Permanencia</h1>
+                <div id="siteSub">
+                    Documento de Orientación Obligatoria <b>(Acreditación L-01+)</b> — <span class="restricted">Difusión
+                        limitada a
+                        ciudadanos</span>
+                </div>
+
+                <section class="article-section">
+                    <p>Bienvenido a su nueva etapa en <b>Blackwood Hollow</b>. Al alcanzar los 13 años, el
+                        <i>Appalachian Resurgence
+                            Trust</i> (ART) le otorga este documento para formalizar su transición hacia una
+                        participación activa en la
+                        comunidad. La vida en el Hollow se rige por el principio de <b>Autosuficiencia Protegida</b>.
+                    </p>
+
+                    <nav id="toc">
+                        <strong>Índice de la Guía</strong>
+                        <ul>
+                            <li><a href="#demografia-distribucion">1. Distribución y Dinámica de Movilidad</a></li>
+                            <li><a href="#demografia-economia">2. Economía Local y Empleo ART</a></li>
+                            <li><a href="#demografia-cultura">3. Cultura, Deporte y Ocio Social</a></li>
+                            <li><a href="#demografia-servicios">4. Servicios, Sostenibilidad y Hogar</a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <section class="article-section" id="demografia-distribucion">
+                    <h2>Distribución y Dinámica</h2>
+                    <p>La libertad de movimiento es un derecho en nuestro enclave, pero su ejercicio conlleva
+                        responsabilidad colectiva.
+                        Para garantizar la invisibilidad del valle, se aplican las siguientes recomendaciones:</p>
+                    <ul>
+                        <li><b>Acceso y Egreso:</b> Se recomienda realizar entradas y salidas durante las fases de alta
+                            densidad de
+                            niebla (ver <i>Monitorización Climática</i> en el sidebar). El uso de la Carretera 404 está
+                            monitorizado;
+                            asegúrese de que su vehículo emita la firma de radiofrecuencia autorizada.</li>
+                        <li><b>Restricción de Menores:</b> Los ciudadanos menores de 18 años requieren autorización
+                            digital de sus
+                            tutores o del <i>Command Post</i> para cruzar el perímetro. Esta norma no es punitiva, sino
+                            preventiva.</li>
+                        <li><b>El Examen de Aptitud:</b> Antes de la mayoría de edad, los residentes deben superar el
+                            examen de defensa
+                            y ocultación. Es imperativo saber defenderse y gestionar situaciones hostiles antes de
+                            operar de forma
+                            autónoma en el exterior.</li>
+                        <li><b>Registro de Actividades:</b> Todas las salidas del enclave deben ser registradas en el
+                            terminal del
+                            <i>Command Post</i>. Esto incluye actividades recreativas, laborales o educativas fuera del
+                            perímetro.
+                        </li>
+                        <li><b>Salidas a Arcanum Caelum:</b> Todas las salidas realizadas al plano Arcanum Caelum están
+                            desaconsejadas.
+                            Si debes realizarlas, asegúrate de tener el permiso de salida aprobado por el <i>Command
+                                Post</i> y de contar con
+                            las medidas de seguridad necesarias según el nivel de alerta.</li>
+                        <li><b>Eventos Comunitarios:</b> La participación en eventos organizados por ART es
+                            altamente recomendada.
+                            Estos eventos fortalecen la cohesión social y permiten la actualización de protocolos de
+                            seguridad.</li>
+                        <li><b>Comunicación Continua:</b> Mantenga siempre su terminal ART activa y sincronizada. En
+                            caso
+                            de emergencia,
+                            el <i>Command Post</i> podrá localizarle y asistirle rápidamente.</li>
+                        <li><b>Respeto al Entorno:</b> Blackwood Hollow es un ecosistema protegido. Evite alterar la
+                            flora y
+                            fauna local,
+                            y siga las directrices de conservación establecidas por ART.</li>
+                        <li><b>Uso de Identidades Alternativas:</b> Al interactuar con el exterior, utilice las
+                            identidades y documentos
+                            proporcionados por ART para minimizar riesgos de exposición.</li>
+                        <li><b>Actualización de Protocolos:</b> Revise periódicamente esta guía y otros documentos
+                            relacionados para estar al
+                            tanto de cualquier cambio en los protocolos de seguridad y vida comunitaria.</li>
+                    </ul>
+
+                    <div class="art-note critical">
+                        <p>Si el nivel de alerta es <a href="protocolos-seguridad.html"
+                                style="color: #a72828; font-weight: bold; text-decoration: underline; text-shadow: 0 0 5px rgba(40, 167, 69, 0.2);">
+                                NIVEL ROJO
+                            </a>. cualquiera de los residentes debe permanecer en su vivienda y no salir bajo ninguna
+                            circunstancia.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="article-section" id="demografia-economia">
+                    <h2>Economía Local</h2>
+                    <p>La economía de Blackwood Hollow no se basa en el consumo, sino en la contribución. El ART
+                        garantiza las
+                        necesidades básicas, pero el desarrollo personal se logra a través del escalafón profesional del
+                        Trust.</p>
+
+                    <h3>Bolsa de Empleo ART</h3>
+                    <p>Todos los puestos de trabajo oficiales dependen de la estructura del Trust. Existen dos
+                        vertientes principales:
+                    </p>
+                    <table class="wikitable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="background: #f2f2f2;">
+                                <th style="padding: 10px; border: 1px solid #ccc;">Nivel operativo</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Ejemplos Internos (Enclave)</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Ejemplos Externos (Campo)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;"><b>Técnico / Básico</b></td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">Mantenimiento de túneles, Logística
+                                    alimentaria,
+                                    Limpieza de instalaciones críticas.</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">Vigilante jurado en sedes pantalla,
+                                    Transporte de
+                                    suministros médicos.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;"><b>Especialista / Avanzado</b></td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">Experto en seguridad del dato,
+                                    Ingeniero geotermal,
+                                    Gestor de firmas magikas.</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">Diplomático en economías emergentes,
+                                    Consultor de
+                                    relaciones públicas, Analista de inteligencia.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="art-note">
+                        <h4>Nota sobre Emprendimiento Local</h4>
+                        <p>ART fomenta la creación de nuevos negocios (panaderías, talleres, artesanía). Sin embargo,
+                            cualquier
+                            iniciativa debe ser presentada en <b>The Command Post</b> para coordinar la logística de
+                            suministros
+                            externos y asegurar que el negocio no comprometa la firma energética del pueblo.</p>
+                    </div>
+                </section>
+
+                <section class="article-section" id="demografia-cultura">
+                    <h2>Cultura y Sociedad</h2>
+                    <p>El bienestar mental es crítico en zonas de aislamiento. Blackwood Hollow promueve un estilo de
+                        vida activo y
+                        comunitario para evitar el "desgaste del refugio".</p>
+
+                    <figure
+                        style="float: right; width: 300px; margin: 0 0 15px 15px; border: 1px solid #a2a9b1; padding: 3px; background-color: #f8f9fa; font-size: 0.85em;">
+                        <a href="img/summerparty2048.png" target="_blank"
+                            style="text-decoration: none; color: inherit;">
+                            <img src="img/summerparty2048.png" alt="Summer Party 2048"
+                                style="width: 100%; height: auto; display: block;">
+                        </a>
+                        <figcaption style="padding: 5px; line-height: 1.3;">
+                            <b>Fig. 1:</b> Fiesta de verano de 2048.
+                        </figcaption>
+                    </figure>
+                    <ul>
+                        <li><b>Competición Deportiva:</b> Los residentes pueden participar en los equipos locales
+                            (Fútbol Americano,
+                            Pentatlón y Artes Marciales). Los encuentros fuera del estado se realizan bajo identidades
+                            de ONGs o clubes
+                            sociales invitados. Si se desea realizar un evento o formar un nuevo club deportivo, se debe
+                            presentar en <b>The Command Post</b>.
+                            Recuerde: <i>El objetivo es la participación y la distracción, nunca el
+                                destacar en los
+                                medios de comunicación externos.</i></li>
+                        <li><b>Espacios Sociales:</b> El uso del Bar local y la Biblioteca es libre para residentes,
+                            respetando siempre
+                            los turnos asignados a la juventud para fomentar su propio espacio de desarrollo.</li>
+                        <li><b>Eventos Culturales:</b> ART organiza eventos mensuales (teatro, música, talleres de
+                            artesanía) para
+                            fortalecer la cohesión social y ofrecer alternativas de ocio seguras.</li>
+                        <li><b>Voluntariado Comunitario:</b> Los residentes son alentados a participar en programas de
+                            voluntariado y eventos sociales organizados por ART para fortalecer la comunidad y fomentar
+                            el
+                            sentido de pertenencia.</li>
+                        <li><b>Educación Continua:</b> Se ofrecen cursos y talleres regulares en diversas áreas
+                            (tecnología,
+                            artes, idiomas)
+                            para promover el desarrollo personal y profesional de los residentes.</li>
+                        <li><b>Red de Apoyo Psicológico:</b> Se dispone de servicios de apoyo psicológico y grupos de
+                            discusión para
+                            abordar los desafíos emocionales asociados con la vida en un entorno aislado.</li>
+                        <li><b>Celebraciones Tradicionales:</b> Se celebran festividades locales y nacionales para
+                            mantener
+                            viva la
+                            cultura y tradiciones, adaptándolas a las particularidades del enclave.</li>
+                        <li><b>Bailes y música:</b> Se organizan eventos musicales y bailes para fomentar la expresión
+                            cultural y la interacción social entre los residentes.</li>
+                        <li><b>Conciertos:</b> Se organizan conciertos locales y nacionales para enriquecer la
+                            experiencia
+                            cultural
+                            de los residentes y promover la diversidad musical.<i>Recuerda que el objetivo es la
+                                participación y la distracción, nunca el destacar en los medios de comunicación
+                                externos.</i></li>
+                        <li><b>Respeto y Tolerancia:</b> Se promueve un ambiente de respeto mutuo y tolerancia entre los
+                            residentes,
+                            independientemente de sus orígenes o creencias.</li>
+                        <li><b>Participación Juvenil:</b> Se fomenta la participación activa de los jóvenes en la toma
+                            de
+                            decisiones
+                            comunitarias a través de consejos juveniles y actividades específicas.</li>
+                        <li><b>Comunicación Abierta:</b> Se mantiene una comunicación abierta y transparente entre los
+                            residentes y la
+                            administración de ART para asegurar que las necesidades y preocupaciones de la comunidad
+                            sean
+                            atendidas.</li>
+                        <li><b>Protección de la Privacidad:</b> Se respetan los derechos de privacidad de los
+                            residentes,
+                            garantizando que
+                            cualquier información personal sea manejada con confidencialidad y seguridad.</li>
+                        <li><b>Fomento de la Creatividad:</b> Se alienta a los residentes a expresar su creatividad a
+                            través
+                            de
+                            proyectos artísticos,
+                            literarios y culturales, contribuyendo al enriquecimiento del entorno comunitario.</li>
+                        <li><b>Fomento de la Lectura:</b> La biblioteca comunitaria ofrece una amplia gama de libros y
+                            recursos
+                            educativos para
+                            promover la lectura y el aprendizaje continuo entre los residentes de todas las edades.</li>
+                        <li><b>Integración de Nuevos Residentes:</b> Se implementan programas de integración para nuevos
+                            residentes,
+                            facilitando su adaptación y participación activa en la comunidad.</li>
+                        <li><b>Redes de Apoyo Mutuo:</b> Se promueven redes de apoyo entre residentes para fortalecer la
+                            solidaridad y
+                            colaboración
+                            en tiempos de necesidad.</li>
+                        <li><b>Actividades al Aire Libre:</b> Se organizan excursiones y actividades al aire libre para
+                            fomentar la
+                            conexión con la naturaleza y el bienestar físico y mental.</li>
+                        <li><b>Fomento de la Educación Ambiental:</b> Se educa a los residentes sobre la importancia de
+                            preservar el
+                            entorno natural
+                            del enclave y se promueven prácticas sostenibles en la vida diaria.</li>
+                        <li><b>Fomento del Liderazgo:</b> Se ofrecen oportunidades para que los residentes desarrollen
+                            habilidades de
+                            liderazgo a través de roles comunitarios y proyectos colaborativos.</li>
+                    </ul>
+                </section>
+
+                <section class="article-section" id="demografia-servicios">
+                    <h2>Servicios y Sostenibilidad</h2>
+                    <p>Nuestra dependencia de la montaña es absoluta. La sostenibilidad no es una filosofía ecológica,
+                        es nuestra
+                        principal contramedida de seguridad.</p>
+
+                    <h3 id="servicios-climatizacion">Climatización y Energía</h3>
+                    <p>Las viviendas de Blackwood Hollow no utilizan sistemas de calefacción convencionales que emitan
+                        humos o firmas
+                        infrarrojas detectables:</p>
+
+                    <figure
+                        style="float: right; width: 300px; margin: 0 0 15px 15px; border: 1px solid #a2a9b1; padding: 3px; background-color: #f8f9fa; font-size: 0.85em;">
+                        <a href="img/diagrama-vivienda-sostenible.jfif" target="_blank"
+                            style="text-decoration: none; color: inherit;">
+                            <img src="img/diagrama-vivienda-sostenible.jfif" alt="Diagrama de Vivienda Sostenible"
+                                style="width: 100%; height: auto; display: block;">
+                        </a>
+                        <figcaption style="padding: 5px; line-height: 1.3;">
+                            <b>Fig. 2:</b> Esquema de integración energética ART-H2. Detalle de captación solar pasiva
+                            y red de
+                            intercambio geotérmico de baja firma térmica.
+                        </figcaption>
+                    </figure>
+
+                    <ul>
+                        <li><b>Calor Geotermal:</b> Las casas se caldean mediante una red de intercambio de calor que
+                            aprovecha la actividad
+                            térmica del Nodo en las minas profundas. El agua caliente circula por el subsuelo del
+                            pueblo, manteniendo una
+                            temperatura constante de 21°C en invierno.</li>
+                        <li><b>Electricidad Silenciosa:</b> La energía proviene de micro-paneles solares camuflados como
+                            pizarras de tejado
+                            y generadores piezoeléctricos en los arroyos cercanos.</li>
+                        <li><b>Aislamiento Térmico Avanzado:</b> Las viviendas están construidas con materiales de alta
+                            eficiencia térmica
+                            que minimizan la pérdida de calor y reducen la necesidad de sistemas de calefacción activos.
+                        </li>
+                        <li><b>Ventilación Natural:</b> El diseño arquitectónico favorece la circulación de aire
+                            natural, reduciendo la
+                            dependencia de sistemas de climatización mecánicos.</li>
+                        <li><b>Iluminación Eficiente:</b> Se utilizan sistemas de iluminación LED de bajo consumo y
+                            tecnologías de
+                            iluminación inteligente para optimizar el uso de la energía.</li>
+                        <li><b>Monitoreo Energético:</b> Un sistema de monitoreo en tiempo real permite a los residentes
+                            controlar su
+                            consumo energético y adoptar prácticas de ahorro.</li>
+                        <li><b>Educación en Sostenibilidad:</b> Se ofrecen talleres y recursos para educar a los
+                            residentes sobre prácticas
+                            sostenibles y el uso responsable de los recursos energéticos.</li>
+                    </ul>
+
+                    <div style="clear: both;"></div>
+
+
+
+                    <h3>Sistemas de Desecho</h3>
+                    <p>No existe el servicio de basuras externo. Todo desperdicio se procesa en el <b>Digestor
+                            Bio-ART</b> para producir
+                        biocombustible líquido utilizado en los vehículos de los Custodios. "Lo que entra en el Hollow,
+                        se queda en el
+                        Hollow".</p>
+                </section>
+
+                <section class="article-section" id="referencias">
+                    <h2>Referencias y Documentación Relacionada</h2>
+                    <ul>
+                        <li><b>Documento IV-B:</b> <a href="primeros-auxilios.html">Manual de Primeros Auxilios ante
+                                exposición a una <i>grieta</i>.
+                            </a></li>
+                        <li>
+                            <a href="javascript:void(0)"
+                                onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no dispone de negocios a su nombre.\nEl intento ha sido registrado.')"
+                                style="color: #888;">
+                                Formulario de Solicitud de insumos para negocios locales.
+                            </a>
+                        </li>
+                        <li><b>Formación:</b> <a href="calendario-pruebas-2050.html">Calendario de Pruebas: El Vuelo del
+                                Cuervo 2050</a>.</li>
+                        <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
+                        <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-tech-data">
+            <p>
+                SISTEMA DE ARCHIVOS DISTRIBUIDOS ART — NODO: <b>MC-DOWELL-01</b> |
+                Protocolo de cifrado: <b>AES-256-GCM</b> activo.
+            </p>
+            <p>
+                Última auditoría de sincronización: <span id="audit-timer">--</span> minutos. |
+                Sesión: <span id="user-session-id" class="code-font">Detectando...</span>
+            </p>
+            <p>
+                Rastreo de terminal: <span id="user-fake-ip" class="code-font">127.0.0.1</span> |
+                Estado: <span class="status-monitor">MONITORIZADO</span>
+            </p>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2050 Appalachian Resurgence Trust. La visualización no autorizada de este informe fuera de las
+                terminales autorizadas del enclave constituye una violación de los Estatutos de Residencia y es motivo
+                de revocación inmediata.</p>
+        </div>
+    </footer>
+
+    <div id="modal-emergencia"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div
+            style="background: #1a1a1a; color: #ff4d4d; border: 2px solid #ff4d4d; padding: 30px; max-width: 500px; font-family: monospace; box-shadow: 0 0 20px rgba(255, 77, 77, 0.5); text-align: center;">
+            <h2 style="margin-top: 0; letter-spacing: 2px;">⚠️ ALERTA DE EMERGENCIA ⚠️</h2>
+            <hr style="border: 0; border-top: 1px solid #ff4d4d; margin: 20px 0;">
+            <p style="text-align: left; line-height: 1.6;">
+                La emergencia ha sido registrada correctamente.
+                <br><br>
+                Su solicitud ha sido <b>geolocalizada</b> mediante el nodo de acceso actual. Un equipo de respuesta
+                (Custodios del Valle) ha sido notificado y se pondrá en contacto con usted en breve.
+                <br><br>
+                <b>INSTRUCCIONES:</b> Si se encuentra fuera de Blackwood Hollow, inicie inmediatamente el <i>Protocolo
+                    de Evasión E-12</i> y mantenga su terminal en modo pasivo.
+            </p>
+            <button onclick="cerrarEmergencia()"
+                style="background: #ff4d4d; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; margin-top: 20px;">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
