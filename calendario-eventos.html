@@ -26,7 +26,7 @@
                 <ul>
                     <li><a href="index.html">Resumen del Enclave</a></li>
                     <li><a href="estado.html">Estado Actual</a></li>
-                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a></li>
                     <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
                     <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
                     <li><a href="guia-residente.html">Guía del Residente</a></li>
@@ -74,13 +74,21 @@
 
             <header id="sticky-header">
                 <nav class="top-links">
-                    <a href="#" class="active">Artículo</a>
-                    <a href="#" class="new">Discusión</a>
+                    <a href="#" class="active">Inicio</a>
+                    <a href="protocolos-seguridad.html">
+                        <b>ESTADO DE ALERTA</b> <span class="status-text-green">Estabilidad (Verde)</span>
+                    </a>
                 </nav>
 
-                <div id="search-box">
+                <div id="search-box" style="display: flex; align-items: center; gap: 5px;">
                     <span>🔍</span>
-                    <input type="text" id="search-input" placeholder="Buscar en el informe ART">
+                    <input type="text" id="search-input" placeholder="Buscar en el informe ART...">
+                    <div id="search-nav" style="display: none; align-items: center; gap: 5px;">
+                        <span id="search-count"
+                            style="font-size: 0.75em; font-family: monospace; color: #888; margin-right: 5px;">0/0</span>
+                        <button onclick="prevMatch()" class="btn-search-nav">▲</button>
+                        <button onclick="nextMatch()" class="btn-search-nav">▼</button>
+                    </div>
                 </div>
 
                 <div id="user-tools" style="display: flex; align-items: center; justify-content: flex-end;">
@@ -532,30 +540,19 @@
                             </div>
                         </div>
                     </div>
-    </div>
-    </section>
 
-    <section class="article-section" id="referencias">
-        <h2>Referencias y Documentación Relacionada</h2>
-        <ul>
-            <li><b>Documento IV-B:</b> <a href="primeros-auxilios.html">Manual de Primeros Auxilios ante
-                    exposición a una <i>grieta</i>.
-                </a></li>
-            <li>
-                <a href="javascript:void(0)"
-                    onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no dispone de negocios a su nombre.\nEl intento ha sido registrado.')"
-                    style="color: #888;">
-                    Formulario de Solicitud de insumos para negocios locales.
-                </a>
-            </li>
-            <li><b>Eventos:</b> <a href="calendario-eventos.html">Calendario de eventos</a>.</li>
-            <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
-            <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
-            </li>
-        </ul>
-    </section>
-    </article>
-    </main>
+                </section>
+                <section class="article-section" id="referencias">
+                    <h2>Referencias y Documentación Relacionada</h2>
+                    <ul>
+                        <li><b>Reglamento:</b> <a href="guia-residente.html">Guía del Residente</a>.</li>
+                        <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
+                        <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </main>
     </div>
 
     <footer id="main-footer">

@@ -9,7 +9,7 @@
     <link rel="icon" href="img/artlogo.png">
 
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="css/protocolos-seguridad.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                 <ul>
                     <li><a href="index.html">Resumen del Enclave</a></li>
                     <li><a href="estado.html">Estado Actual</a></li>
-                    <li><a href="calendario-eventos.html">Calendario de eventos</a></li>
+                    <li><a href="calendario-eventos.html">Calendario de eventos</a>.</li>
                     <li><a href="protocolos-seguridad.html">Protocolos de Seguridad</a></li>
                     <li><a href="comunidad-estudiantes.html">Portal "The Nest"</a></li>
                     <li><a href="guia-residente.html">Guía del Residente</a></li>
@@ -132,79 +132,103 @@
                 </div>
             </div>
 
-            <article id="content">
+            º <article id="content">
                 <h1 id="firstHeading">Blackwood Hollow</h1>
                 <div id="siteSub">
                     Informe Interno Integrado <b>(Versión IV-4, 2050)</b> — <span class="restricted">Difusión
                         limitada a
                         ciudadanos</span>
-
                 </div>
-                <section id="enclave-dashboard" class="article-section">
-                    <h2><span style="color: #28a745;">●</span> Panel de Control Integrado (Dashboard)</h2>
-                    <p>Visualización de métricas en tiempo real. Datos actualizados según el último ciclo de
-                        sincronización del Nodo.
-                    </p>
+                <section id="content-header">
+                    <h1>PROTOCOLO DE RESPUESTA CIVIL Y CONTENCIÓN</h1>
+                    <p class="subtitle">Directiva ART-99 / Jurisdicción Blackwood Hollow</p>
+                </section>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <hr>
 
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">⚡ Matriz Energética (KW)</h4>
-                            <canvas id="chartEnergia"></canvas>
-                            <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Eficiencia actual: 115%.
-                                Superávit almacenado en
-                                baterías de grafeno.</p>
+                <div class="alert-protocol-container">
+                    <div class="alert-card alert-red">
+                        <div class="alert-header">
+                            <span class="alert-status">ESTADO DE ALERTA: MÁXIMA (ROJO)</span>
+                            <span class="alert-code">CÓDIGO: OMEGA-INCIDENTE</span>
                         </div>
+                        <div class="alert-body">
+                            <h3>Naturaleza de la Amenaza</h3>
+                            <p>Brecha de seguridad mayor, incursión hostil externa o manifestación de anomalías de Grado
+                                5 (Grietas).
+                            </p>
 
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">🛡️ Incidentes de Seguridad</h4>
-                            <canvas id="chartSeguridad"></canvas>
-                        </div>
-
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">👥 Distribución Etaria</h4>
-                            <canvas id="chartDemografia"></canvas>
-                        </div>
-
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">🎭 Solicitudes Culturales</h4>
-                            <canvas id="chartCultura"></canvas>
-                        </div>
-
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">🏀 Ratio Actividad Física (< 21 años)</h4>
-                                    <canvas id="chartDeporte"></canvas>
-                        </div>
-
-                        <div class="chart-card"
-                            style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #fff;">
-                            <h4 style="margin-top:0">💼 Sectores en Crecimiento</h4>
-                            <div style="height: 250px;"> <canvas id="chartEconomia"></canvas>
+                            <div class="protocol-box">
+                                <strong>DIRECCIÓN CIVIL:</strong>
+                                <ul>
+                                    <li><strong>Confinamiento Obligatorio:</strong> Queda suspendido el derecho de libre
+                                        tránsito.
+                                        Permanezca en su vivienda/búnker asignado.</li>
+                                    <li><strong>Acceso Restringido:</strong> Solo personal con acreditación de Seguridad
+                                        Nivel 3 o
+                                        superior puede circular por vías públicas.</li>
+                                    <li><strong>Agentes Externos:</strong> Mantener cobertura total. No intenten
+                                        retornar a la población
+                                        si esto compromete el anonimato del Trust. Actúen como células de apoyo solo
+                                        bajo orden directa.
+                                    </li>
+                                </ul>
+                                <p class="priority-warn">⚠️ PRIORIDAD ABSOLUTA: EXTRACCIÓN Y RESGUARDO DE MENORES DE
+                                    EDAD.</p>
                             </div>
                         </div>
-
                     </div>
-                </section>
+
+                    <div class="alert-card alert-orange">
+                        <div class="alert-header">
+                            <span class="alert-status">ALERTA PREVENTIVA (NARANJA)</span>
+                            <span class="alert-code">CÓDIGO: VIGILANCIA-ACTIVA</span>
+                        </div>
+                        <div class="alert-body">
+                            <h3>Naturaleza de la Amenaza</h3>
+                            <p>Compromiso de información crítica, presencia detectada de la Tecnocracia o facciones
+                                hostiles en el
+                                perímetro.</p>
+
+                            <div class="protocol-box">
+                                <strong>RESTRICCIONES TEMPORALES:</strong>
+                                <ul>
+                                    <li><strong>Cancelación de Actos:</strong> Suspensión inmediata de eventos
+                                        deportivos, culturales y
+                                        educativos.</li>
+                                    <li><strong>Control de Salidas:</strong> Se requiere salvoconducto digital y
+                                        autorización previa
+                                        para abandonar la población.</li>
+                                    <li><strong>Ciudadanos Externos:</strong> Vigilancia pasiva. Estén preparados para
+                                        una transición a
+                                        Nivel Rojo en menos de 15 minutos.</li>
+                                </ul>
+                                <p class="priority-warn">ORDEN DE PROTECCIÓN: Menores y civiles no combatientes primero.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-card alert-green">
+                        <div class="alert-header">
+                            <span class="alert-status">ESTADO DE NORMALIDAD (VERDE)</span>
+                            <span class="alert-code">CÓDIGO: ESTABILIDAD</span>
+                        </div>
+                        <div class="alert-body">
+                            <p>Riesgos de seguridad dentro de los parámetros aceptables. Se autoriza la actividad civil
+                                estándar según
+                                los horarios vigentes.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <section class="article-section" id="referencias">
                     <h2>Referencias y Documentación Relacionada</h2>
                     <ul>
                         <li><b>Documento IV-B:</b> <a href="primeros-auxilios.html">Manual de Primeros Auxilios ante
                                 exposición a una <i>grieta</i>.
                             </a></li>
-                        <li>
-                            <a href="javascript:void(0)"
-                                onclick="alert('ERROR 403: ACCESO DENEGADO.\nSu nivel de acreditación actual (Nivel 1 - Residente) no dispone de negocios a su nombre.\nEl intento ha sido registrado.')"
-                                style="color: #888;">
-                                Formulario de Solicitud de insumos para negocios locales.
-                            </a>
-                        </li>
-                        <li><b>Eventos:</b> <a href="calendario-eventos.html">Calendario de eventos</a>.</li>
-                        <li><b>Comunidad:</b> <a href="comunidad-estudiantes.html">Portal "The Nest"</a>.</li>
+                        <li><b>Reglamento:</b> <a href="guia-residente.html">Guía del Residente</a>.</li>
                         <li><b>Seguridad:</b> <a href="protocolos-seguridad.html">Protocolos de Seguridad ART</a>.
                         </li>
                     </ul>
@@ -259,8 +283,6 @@
     <div id="watermark">COPIA DE SEGURIDAD <br> DISTRIBUCIÓN LIMITADA</div>
 
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/estado.js"></script>
 
 </body>
 
